@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="使用yaahp时, 判断矩阵要素排列顺序不是按照要素在模型中的位置确定的, 而是根据要素之间的连接创建时间顺序排列的.">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yaahp判断矩阵中要素排列顺序如何控制?">
+<meta property="og:url" content="http://www.yaahp.com/yaahp-matrix-sequence/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="使用yaahp时, 判断矩阵要素排列顺序不是按照要素在模型中的位置确定的, 而是根据要素之间的连接创建时间顺序排列的.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_6.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_4.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_1.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_2.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_3.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_5.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_6.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_7.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_8.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix_seq/ms_9.png">
+<meta property="og:updated_time" content="2018-02-24T13:30:37.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yaahp判断矩阵中要素排列顺序如何控制?">
+<meta name="twitter:description" content="使用yaahp时, 判断矩阵要素排列顺序不是按照要素在模型中的位置确定的, 而是根据要素之间的连接创建时间顺序排列的.">
+<meta name="twitter:image" content="http://www.yaahp.com/image/matrix_seq/ms_6.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/yaahp-matrix-sequence/"/>
+
+
+
+
+
+  <title>yaahp判断矩阵中要素排列顺序如何控制? | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaahp-matrix-sequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">yaahp判断矩阵中要素排列顺序如何控制?</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T00:00:00+08:00">
+                May 14 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  使用yaahp时, 判断矩阵要素排列顺序不是按照要素在模型中的位置确定的, 而是根据要素之间的连接创建时间顺序排列的.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/matrix_seq/ms_6.png" alt="连接顺序模型" width="555"><br><a id="more"></a></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>yaahp模型绘制完成后, 解析出的判断矩阵中的元素顺序并不是按照层次模型中的要素位置顺序排列, 而是根据要素之间连接的创建顺序排列的.</p>
+<p>yaahp中没有提供按位置顺序排列判断矩阵要素顺序功能的原因如下:</p>
+<p><strong>1. 一般情况不需要这个功能</strong></p>
+<p>判断矩阵中要素的排列顺序只是影响输入数据到判断矩阵时的顺序, 而有按照一定顺序输入判断矩阵数据需求的情况, 一般是已经有回收好的专家决策数据(而且使用了其他格式的调查表, 而不是yaahp生成的调查表), 如果能够按照一定的顺序填写会是输入数据工作更加方便.</p>
+<p>下面以下图所示的为”过河收益”判断矩阵输入数据为例, 说明<strong>一般情况下是不需要关心顺序问题的.</strong></p>
+<p>下图中的判断矩阵需要填写上三角各个要素的决策数据, 在选中其中一个要素(Goal)后, 判断矩阵正上方会有明显的关于两两比较问题提示(图中蓝色框起来的部分), 而右上方的拖动条上下分别显示了要进行比较的两个因素(经济收益和社会收益, 图中红色框起来的部分), 其含义就是”对于过河收益, 比较经济收益和社会收益哪个更重要/更有优势”.</p>
+<p><img src="../image/matrix_seq/ms_4.png" alt="判断矩阵说明" title="判断矩阵说明" width="500"></p>
+<p>一个个地选择需要输入数据的判断矩阵要素, 观察决策问题是什么, 并使用拖动条完成决策数据的输入, <strong>可以看出这个过程中判断矩阵要素的排列顺序如何其实并不需要关注</strong>.</p>
+<p><strong>2. 实现起来比较复杂</strong></p>
+<p>为了实现按要素在层次模型图中的摆放位置排列判断矩阵要素顺序, 需要在解析模型时进行做进一步处理, 具有一定复杂程度.</p>
+<p><br></p>
+<p>基于这两个原因, “按要素位置排列判断矩阵对应要素的顺序”这个功能特性并不是非常必要的, 或者至少它的实现优先级比较低, 所以yaahp至今没有提供这个功能. 但是也有一些用户提出了控制要素顺序的需求, 本文给出具体的操作方法.</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用yaahp完成编辑模型, 然后在输入判断矩阵数据时, 一般会发现判断矩阵在层次树上的排列顺序以及判断矩阵中要素的排列顺序与我们期望的是相同的. 例如下面图中的层次模型:</p>
+<p><img src="../image/matrix_seq/ms_1.png" alt="层次模型" title="层次模型" width="500"></p>
+<p>一般情况下解析生成的判断矩阵及其中要素的排列顺序如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_2.png" alt="顺序ok" title="顺序ok" width="500"></p>
+<p>但有时解析生成的判断矩阵及其中要素的排列顺序确是乱的, 如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_3.png" alt="顺序error" title="顺序error" width="500"></p>
+<h2 id="准确地控制判断矩阵中要素的排列顺序"><a href="#准确地控制判断矩阵中要素的排列顺序" class="headerlink" title="准确地控制判断矩阵中要素的排列顺序"></a>准确地控制判断矩阵中要素的排列顺序</h2><p>可以通过两种方式来控制判断矩阵中元素的排列顺序:</p>
+<ul>
+<li>通过控制要素的连接顺序</li>
+<li>通过控制要素的创建顺序</li>
+</ul>
+<h3 id="通过控制要素的连接顺序"><a href="#通过控制要素的连接顺序" class="headerlink" title="通过控制要素的连接顺序"></a>通过控制要素的连接顺序</h3><p>一个判断矩阵涉及一个上层要素(Goal)和多个它的影响因素(C1, C2,…,Cn), 判断矩阵中各个要素的顺序如何, 由C1, C2,…,Cn连接到Goal的时间顺序确定.</p>
+<p>例如下图中, “Goal”的影响因素有”C1”, “C2”和”C3”.</p>
+<p><img src="../image/matrix_seq/ms_5.png" alt="model1" title="model1" width="500"></p>
+<p>如果希望判断矩阵”Goal”中各要素的排列顺序为”C2”,”C1”,”C3”, 那就应该按以下的顺序建立连接:</p>
+<pre><code>1) 首先连接&quot;C2&quot;和&quot;Goal&quot;;
+2) 然后连接&quot;C1&quot;和&quot;Goal&quot;;
+3) 最后连接&quot;C3&quot;和&quot;Goal&quot;.
+</code></pre><p>如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_6.png" alt="连接顺序模型" title="连接顺序模型" width="700"></p>
+<p>这样, 判断矩阵中元素的排列顺序就是”C2”,”C1”,”C3”了, 如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_7.png" alt="连接顺序矩阵" title="连接顺序矩阵" width="500"></p>
+<h3 id="通过控制要素的创建顺序"><a href="#通过控制要素的创建顺序" class="headerlink" title="通过控制要素的创建顺序"></a>通过控制要素的创建顺序</h3><p>编辑层次模型时一个个地连接要素非常耗时, yaahp提供了<a href="http://ahpman.metadecsn.com/manual/model/#326" target="_blank" rel="noopener">一次添加多个要素间的连接关系</a>来简化要素连接操作.</p>
+<p>当一次连接多个要素时, 各连接创建的顺序根据要素创建的时间顺序排列.</p>
+<p>例如还是刚才的模型, 想要让判断矩阵中的元素排列顺序为”C2”,”C1”,”C3”, 可以这样做:</p>
+<pre><code>1) 创建要素&quot;C2&quot;;
+2) 创建要素&quot;C1&quot;;
+3) 创建要素&quot;C3&quot;;
+4) 选中这三个要素, 并选择&quot;&quot;一次将它们连接到&quot;Goal&quot;.
+</code></pre><p>这样判断矩阵中的元素排列顺序也是”C2”,”C1”,”C3”了, 如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_8.png" alt="连接顺序模型2" title="连接顺序模型2" width="700"></p>
+<p>这样, 判断矩阵中元素的排列顺序也是”C2”,”C1”,”C3”, 如下图所示:</p>
+<p><img src="../image/matrix_seq/ms_9.png" alt="连接顺序矩阵2" title="连接顺序矩阵2" width="500"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是准确控制判断矩阵中要素排列顺序的方法, 主要的思路就是:<font color="red">要素排列顺序依赖于连接的创建顺序</font>. 理解了这种思路就可以随意地控制层次结构中的判断矩阵的排列顺序以及判断矩阵中要素的排列顺序了.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yaahp11.0-release-note/" rel="next" title="yaahp V11.0 发布声明及下载">
+                <i class="fa fa-chevron-left"></i> yaahp V11.0 发布声明及下载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/yaahp-safe/" rel="prev" title="某些杀毒软件误报yaahp存在病毒木马的说明">
+                某些杀毒软件误报yaahp存在病毒木马的说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准确地控制判断矩阵中要素的排列顺序"><span class="nav-number">3.</span> <span class="nav-text">准确地控制判断矩阵中要素的排列顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过控制要素的连接顺序"><span class="nav-number">3.1.</span> <span class="nav-text">通过控制要素的连接顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过控制要素的创建顺序"><span class="nav-number">3.2.</span> <span class="nav-text">通过控制要素的创建顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文对yaahp中的群决策专家数据集结方法进行介绍，并针对用户经常问到的论文中如何给出群决策数据的问题进行说明。">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AHP群决策集结数据及其不适合作为论文中数据依据的说明">
+<meta property="og:url" content="http://www.yaahp.com/group-data-in-article/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="本文对yaahp中的群决策专家数据集结方法进行介绍，并针对用户经常问到的论文中如何给出群决策数据的问题进行说明。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/all.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/gpanel1.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/result-tom.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/result-white.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/result-agg.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/gpanel2.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/matrix-tom.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/matrix-white.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/matrix-levelavg.png">
+<meta property="og:image" content="http://www.yaahp.com/image/group-data-in-article/matrix-numavg.png">
+<meta property="og:updated_time" content="2019-01-19T02:19:05.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AHP群决策集结数据及其不适合作为论文中数据依据的说明">
+<meta name="twitter:description" content="本文对yaahp中的群决策专家数据集结方法进行介绍，并针对用户经常问到的论文中如何给出群决策数据的问题进行说明。">
+<meta name="twitter:image" content="http://www.yaahp.com/image/group-data-in-article/all.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/group-data-in-article/"/>
+
+
+
+
+
+  <title>AHP群决策集结数据及其不适合作为论文中数据依据的说明 | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/group-data-in-article/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">AHP群决策集结数据及其不适合作为论文中数据依据的说明</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-19T00:00:00+08:00">
+                Jan 19 2019
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  本文对yaahp中的群决策专家数据集结方法进行介绍，并针对用户经常问到的论文中如何给出群决策数据的问题进行说明。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/group-data-in-article/all.png" alt="AHP模型"></p>
+<a id="more"></a>
+<p><strong><em>转载自<a href="http://www.jeffzhang.cn" target="_blank" rel="noopener">张建华的博客</a>, 原文链接: <a href="http://www.jeffzhang.cn/group-data-in-article/" target="_blank" rel="noopener">http://www.jeffzhang.cn/group-data-in-article/</a>.</em></strong></p>
+<p><br></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>群决策数据集结是将多位专家给出的决策数据综合起来，并以此为基础进行计算得到群体决策结论。<br>yaahp中群决策专家数据集结方式有四种，这四种又可以分为两类：</p>
+<ul>
+<li><p>计算结果集结</p>
+<blockquote>
+<p>判断矩阵排序权重加权几何平均；<br>判断矩阵排序权重加权算术平均；</p>
+</blockquote>
+</li>
+<li><p>判断矩阵集结</p>
+<blockquote>
+<p>判断矩阵数据等级平均；<br>判断矩阵数据数值平均；</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="计算结果集结"><a href="#计算结果集结" class="headerlink" title="计算结果集结"></a>计算结果集结</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>首先对每个专家的判断矩阵进行计算，得到各个判断矩阵的排序权重，然后再对所有专家的排序权重（计算结果）利用算术/集合平均完成数据集结，最后利用集结后的判断矩阵排序权重计算总排序权重。</p>
+<h3 id="yaahp中的设定"><a href="#yaahp中的设定" class="headerlink" title="yaahp中的设定"></a>yaahp中的设定</h3><p>计算结果集结是yaahp的默认群决策数据集结算法，群决策面板设定如下图所示。</p>
+<p><img src="../image/group-data-in-article/gpanel1.png" width="300" alt="计算结果集结设定" title="计算结果集结设定"></p>
+<h3 id="示例说明"><a href="#示例说明" class="headerlink" title="示例说明"></a>示例说明</h3><p>下面结合计算数据，对计算结果集结具体说明。</p>
+<p>假设两位专家Tom和White参与群决策计算，他们的某个判断矩阵(过河收益)数据如下面两个图所示。</p>
+<p><img src="../image/group-data-in-article/result-tom.png" width="550" alt="专家Tom的数据" title="专家Tom的数据"></p>
+<p><img src="../image/group-data-in-article/result-white.png" width="550" alt="专家White的数据" title="专家White的数据"></p>
+<p>对于某个确定的判断矩阵，计算结果集结首先计算得到各个专家此判断矩阵的排序权重<em>Wi</em>，如上图中红框中两位专家的<em>Wi</em>列数据。</p>
+<p>将对应的<em>Wi</em>加权平均（两位专家权重设定为平均分配，即均为0.5），得到两位专家集结后的<em>Wi</em>，如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">要素</th>
+<th style="text-align:center"><em>Wi</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">经济收益</td>
+<td style="text-align:center">0.5065</td>
+</tr>
+<tr>
+<td style="text-align:center">社会收益</td>
+<td style="text-align:center">0.1250</td>
+</tr>
+<tr>
+<td style="text-align:center">环境收益</td>
+<td style="text-align:center">0.3684</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：<em>Wi</em>之和不等于1.0是由于浮点数显示只保留小数点后四位的原因。</p>
+</blockquote>
+<p>计算得到<em>Wi</em>后，再计算出判断矩阵中上三角元素的值，就可以得到yaahp集结后的判断矩阵数据，如下图所示。</p>
+<p><img src="../image/group-data-in-article/result-agg.png" width="550" alt="集结数据" title="集结数据"></p>
+<p>对各个专家的所有判断矩阵用这种方法进行集结，就可以得到一组集结后的所有判断矩阵的<em>Wi</em>，最后再根据层次模型结构就可以计算出总排序权重。</p>
+<h3 id="计算结果集结后的判断矩阵完全一致"><a href="#计算结果集结后的判断矩阵完全一致" class="headerlink" title="计算结果集结后的判断矩阵完全一致"></a>计算结果集结后的判断矩阵完全一致</h3><p>因为判断矩阵中各元素的值是根据<em>Wi</em>计算出来的，所以一致性比例一定是0.0，完全一致。但这个一致性比例是<font color="red">没有实际意义的</font>，也即<font color="red">不能用它来说明决策数据的一致性</font>。</p>
+<h2 id="判断矩阵集结"><a href="#判断矩阵集结" class="headerlink" title="判断矩阵集结"></a>判断矩阵集结</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>首先对每个专家的判断矩阵中的对应项进行等级/数值平均，得到一组集结后的判断矩阵，然后计算各个矩阵的排序权重<em>Wi</em>，最后在计算总排序权重。</p>
+<p>等级平均和数值平均的差别在于对小于1的两两对比等级的处理。等级平均认为小于1的两两对比值之间的差距也是“1”，而数值平均小于1的等级差距也小于1。例如等级平均认为1/2和1/4之间相差与2和4之间的差距相同，而使用数值平均时，1/2与1/4之间的差距为1/4，而2与4之间的差距为2。</p>
+<h3 id="yaahp中的设定-1"><a href="#yaahp中的设定-1" class="headerlink" title="yaahp中的设定"></a>yaahp中的设定</h3><p>计算结果集结是yaahp的默认群决策数据集结算法，群决策面板设定如下图所示。</p>
+<p><img src="../image/group-data-in-article/gpanel2.png" width="300" alt="判断矩阵集结设定" title="判断矩阵集结设定"></p>
+<h3 id="示例说明-1"><a href="#示例说明-1" class="headerlink" title="示例说明"></a>示例说明</h3><p>下面结合计算数据，对计算结果集结具体说明。</p>
+<p>假设两位专家Tom和White参与群决策计算，他们的某个判断矩阵(过河收益)数据如下面两个图所示。</p>
+<p><img src="../image/group-data-in-article/matrix-tom.png" width="550" alt="专家Tom的数据" title="专家Tom的数据"></p>
+<p><img src="../image/group-data-in-article/matrix-white.png" width="550" alt="专家White的数据" title="专家White的数据"></p>
+<p>两两比较项“经济收益 vs 环境收益”数据使用红框圈了起来，用这项数据来说明等级平均和数值平均的不同。</p>
+<ul>
+<li>等级平均</li>
+</ul>
+<p>等级平均的集结结果如下图所示。</p>
+<p><img src="../image/group-data-in-article/matrix-levelavg.png" width="550" alt="等级平均" title="等级平均"></p>
+<p>对于两两比较项“经济收益 vs 环境收益”，Tom给出的决策数据为6，而White给出的决策数据为1/3。等级平均后的值为5/2。</p>
+<ul>
+<li>数值平均</li>
+</ul>
+<p>数值平均的集结结果如下图所示。</p>
+<p><img src="../image/group-data-in-article/matrix-numavg.png" width="550" alt="数值平均" title="数值平均"></p>
+<p>对于两两比较项“经济收益 vs 环境收益”，Tom给出的决策数据为6，而White给出的决策数据为1/3。数值平均后的值为19/6。</p>
+<h3 id="集结后的判断矩阵的一致性比例"><a href="#集结后的判断矩阵的一致性比例" class="headerlink" title="集结后的判断矩阵的一致性比例"></a>集结后的判断矩阵的一致性比例</h3><p>一致性简单地说就是决策者在给出多个相关联的决策是否前后逻辑相符、一致，只有针对<font color="red">一个具体的决策者</font>才有意义。</p>
+<p>判断矩阵集结通过一些计算把各个专家的数据汇总在一起，只是为了计算群决策的总排序权重而做的数据处理，这些集结后的判断矩阵数据已经<font color="red">没有前后逻辑是否相符或一致的意义</font>了。 所以集结后的数据是<font color="red">没有实际意义的</font>，只具有计算上的意义，<font color="red">不能用它来说明决策数据的一致性</font>。</p>
+<p>例如两个专家的某个判断矩阵均满足一致性要求，也就是按这两位专家各自的思考给出的决策都是一致的，但由于这两位专家给出的各项决策数据有一定差异（例如之前数据中某项数据Tom给出6，White给出1/3），最终判断矩阵集结后得到了一个不一致的判断矩阵，这种情况可以认为两位专家这个判断矩阵数据不合格吗？或者反之两位专家数据都不满足一致性比例，但集结后的判断矩阵满足一致性比例，能认为两位专家的数据合格吗？</p>
+<h2 id="论文中如何说明群决策所依据的数据是有效的？"><a href="#论文中如何说明群决策所依据的数据是有效的？" class="headerlink" title="论文中如何说明群决策所依据的数据是有效的？"></a>论文中如何说明群决策所依据的数据是有效的？</h2><p>了解了集结后的判断矩阵数据及其一致性比例数值只在计算时有作用，并没有实际意义，就可以得出<font color="red">集结后的判断矩阵数据和一致性比例无法为论文提供有效的数据依据</font>的结论，所以不应该把这些数据放在论文中。</p>
+<p>那要如何在论文中说明群决策所依据的数据是有效的呢？应该使用<font color="red">所有的原始数据，</font>也就是所有参与决策的专家判断矩阵及其一致性比例数据。只有所有专家的所有判断矩阵都满足一致性要求，才能认为群决策所依据的数据是有效的，也就是在论文正文中说明所有判断矩阵均满足一致性比例（或修正后满足一致性比例），如果必须提供完整数据，可以在附录中列出所有的判断矩阵数据。</p>
+<p>要求所有专家的所欲判断矩阵都满足一致性要求一般无法做到，但可以利用yaahp提供的一致性自动修正功能修正不一致判断矩阵。如果使用yaahp的<a href="http://ahpman.metadecsn.com/manual/matrix/#49" target="_blank" rel="noopener">判断矩阵检查</a>功能给出的建议是可以自动修正（绿色图标），一般可以让yaahp在计算时自动修正一致性不需要用户额外的处理。 关于自动修正的基本思路、自动修正是否合理、自动修正对数据有怎样的要求，请参考文章<a href="http://www.jeffzhang.cn/yaahp-matrix-check/" target="_blank" rel="noopener">判断矩阵数据检查</a>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在论文中列出集结后的判断矩阵及其一致性比例数据作为合理群决策的数据依据是不合适的，应该将所有参与群决策的专家的所有判断矩阵及其一致性比例数据作为数据依据。</p>
+<p>群决策所有专家的判断矩阵全部写在论文正文中会占用太大篇幅，一般没法这么做。只需要在论文正文中说明所有判断矩阵均满足/修正后满足一致性比例，如果必须提供完整数据，将判断矩阵数据作为附录部分提供。</p>
+<h2 id="Copyright"><a href="#Copyright" class="headerlink" title="Copyright"></a>Copyright</h2><p>本文版权归博主张建华(Jianhua Zhang、两招)所有，转载或引用请注明出处。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/survey-macro/" rel="next" title="专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？">
+                <i class="fa fa-chevron-left"></i> 专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/yaahp-xls-survey/" rel="prev" title="可导入的Excel格式调查问卷相关问题说明">
+                可导入的Excel格式调查问卷相关问题说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算结果集结"><span class="nav-number">2.</span> <span class="nav-text">计算结果集结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaahp中的设定"><span class="nav-number">2.2.</span> <span class="nav-text">yaahp中的设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例说明"><span class="nav-number">2.3.</span> <span class="nav-text">示例说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算结果集结后的判断矩阵完全一致"><span class="nav-number">2.4.</span> <span class="nav-text">计算结果集结后的判断矩阵完全一致</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断矩阵集结"><span class="nav-number">3.</span> <span class="nav-text">判断矩阵集结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yaahp中的设定-1"><span class="nav-number">3.2.</span> <span class="nav-text">yaahp中的设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例说明-1"><span class="nav-number">3.3.</span> <span class="nav-text">示例说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集结后的判断矩阵的一致性比例"><span class="nav-number">3.4.</span> <span class="nav-text">集结后的判断矩阵的一致性比例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文中如何说明群决策所依据的数据是有效的？"><span class="nav-number">4.</span> <span class="nav-text">论文中如何说明群决策所依据的数据是有效的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copyright"><span class="nav-number">6.</span> <span class="nav-text">Copyright</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

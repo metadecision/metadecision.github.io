@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="有些用户反映yaahp在执行计算操作时异常退出, 这个错误是由于Visual C++运行时安装失败引起的, 本文对这个问题进行说明并给出解决方法.">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yaahp执行计算时异常退出的解决方法">
+<meta property="og:url" content="http://www.yaahp.com/yaahp-calc-crash/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="有些用户反映yaahp在执行计算操作时异常退出, 这个错误是由于Visual C++运行时安装失败引起的, 本文对这个问题进行说明并给出解决方法.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/installfailed.png">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/installok.png">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/installfailed.png">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/win7.png">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/win7sp1.png">
+<meta property="og:image" content="http://www.yaahp.com/image/calc-failed/installok.png">
+<meta property="og:updated_time" content="2019-03-09T03:45:11.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yaahp执行计算时异常退出的解决方法">
+<meta name="twitter:description" content="有些用户反映yaahp在执行计算操作时异常退出, 这个错误是由于Visual C++运行时安装失败引起的, 本文对这个问题进行说明并给出解决方法.">
+<meta name="twitter:image" content="http://www.yaahp.com/image/calc-failed/installfailed.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/yaahp-calc-crash/"/>
+
+
+
+
+
+  <title>yaahp执行计算时异常退出的解决方法 | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaahp-calc-crash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">yaahp执行计算时异常退出的解决方法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T02:00:00+08:00">
+                May 12 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  有些用户反映yaahp在执行计算操作时异常退出, 这个错误是由于Visual C++运行时安装失败引起的, 本文对这个问题进行说明并给出解决方法.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/calc-failed/installfailed.png" alt="VCRuntime install faile" width="300"></p>
+<a id="more"></a>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>有些用户反映在使用yaahp过程中, 计算排序权重时会出现软件异常退出的问题, 这个问题一般都是因为Visual C++ 2017运行时未正常安装引起的.</p>
+<h1 id="yaahp为什么需要Visual-C-运行时"><a href="#yaahp为什么需要Visual-C-运行时" class="headerlink" title="yaahp为什么需要Visual C++运行时?"></a>yaahp为什么需要Visual C++运行时?</h1><p>为了提高计算效率，yaahp中一些耗时的算法使用C/C++编写(例如判断矩阵自动修正、自动补全等), 这部分代码执行需要微软的Visual C++ 2017运行时正确安装.</p>
+<font color="red">yaahp的安装程序会在安装时自动安装所需的Visual C++ 运行时，但是也有可能由于不满足安装条件,  或与系统中已安装的软件冲突而安装失败.</font>
+
+<p>如果Visual C++运行时安装失败, 那么执行这些C/C++编写的算法将会导致yaahp异常退出.</p>
+<h1 id="手动安装Visual-C-2017运行时解决此问题"><a href="#手动安装Visual-C-2017运行时解决此问题" class="headerlink" title="手动安装Visual C++ 2017运行时解决此问题"></a>手动安装Visual C++ 2017运行时解决此问题</h1><p>首先<a href="http://download.metadecsn.com/vc_redist_x86.exe" target="_blank" rel="noopener">下载Visual C++ Redistributable for Visual Studio 2017</a>.<br>将下载的vc_redist_x86.zip文件解压后得到安装程序”vc_redist_x86.exe”. 执行安装程序, 如果安装成功(如下图), 该问题解决.</p>
+<p><img src="../image/calc-failed/installok.png" alt="VCRuntime install OK" title="VCRuntime install OK" width="300"></p>
+<p>如果安装失败(如下图), 请参考下一节内容.</p>
+<p><img src="../image/calc-failed/installfailed.png" alt="VCRuntime install faile" title="VCRuntime install failed" width="300"></p>
+<h1 id="Windows版本"><a href="#Windows版本" class="headerlink" title="Windows版本"></a>Windows版本</h1><p>Visual C++ 2017运行时支持的操作系统如下:</p>
+<pre><code>Windows 10(1507 版或更高版本), Windows 7 Service Pack 1, Windows 8.1
+Windows Server 2003 Service Pack 2, Windows Server 2008 R2 SP1
+Windows Server 2008 Service Pack 2, Windows Server 2012
+Windows Vista Service Pack 2, Windows XP Service Pack 3
+</code></pre><p>所以, <font color="red">如果电脑上的Windows版本(并打相应的补丁包)不在这个列表中, 将无法成功安装Visual C++ 2017运行时, 导致yaahp执行计算时失败.</font></p>
+<h2 id="以Windows-7为例说明解决办法"><a href="#以Windows-7为例说明解决办法" class="headerlink" title="以Windows 7为例说明解决办法"></a>以Windows 7为例说明解决办法</h2><p>查看系统信息, 发现系统为未打Service Pack1的Windows 7, 如下图所示:</p>
+<p><img src="../image/calc-failed/win7.png" alt="win7" title="Win7"></p>
+<p><a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=5842" target="_blank" rel="noopener">下载Windows 7 Service Pack1</a>, 如果是32位系统, 下载<font color="red">windows6.1-KB976932-X86.exe</font>; 如果是64位系统, 下载<font color="red">windows6.1-KB976932-X64.exe</font>.</p>
+<p>安装后查看系统信息, 如下图.</p>
+<p><img src="../image/calc-failed/win7sp1.png" alt="win7sp1" title="Win7 SP1"></p>
+<p>然后再次安装Visual C++ 2017运行时, 安装成功, 如下图.</p>
+<p><img src="../image/calc-failed/installok.png" alt="VCRuntime install OK" title="VCRuntime install OK" width="300"></p>
+<p>启动yaahp, 如果没有其他问题, 既可以正常进行计算了.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yaahp-fce-introduction/" rel="next" title="结合层次分析法和模糊综合评价法的评价方法-利用yaahp">
+                <i class="fa fa-chevron-left"></i> 结合层次分析法和模糊综合评价法的评价方法-利用yaahp
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/yaahp11.0-release-note/" rel="prev" title="yaahp V11.0 发布声明及下载">
+                yaahp V11.0 发布声明及下载 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yaahp为什么需要Visual-C-运行时"><span class="nav-number">2.</span> <span class="nav-text">yaahp为什么需要Visual C++运行时?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动安装Visual-C-2017运行时解决此问题"><span class="nav-number">3.</span> <span class="nav-text">手动安装Visual C++ 2017运行时解决此问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows版本"><span class="nav-number">4.</span> <span class="nav-text">Windows版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以Windows-7为例说明解决办法"><span class="nav-number">4.1.</span> <span class="nav-text">以Windows 7为例说明解决办法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

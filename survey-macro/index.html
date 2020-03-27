@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文对可导入的专家调查问卷（xls格式）使用相关问题进行说明，供专家填写问卷时进行参考。">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？">
+<meta property="og:url" content="http://www.yaahp.com/survey-macro/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="本文对可导入的专家调查问卷（xls格式）使用相关问题进行说明，供专家填写问卷时进行参考。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/survey-marco/surveyxls.png">
+<meta property="og:updated_time" content="2018-04-14T09:49:32.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？">
+<meta name="twitter:description" content="本文对可导入的专家调查问卷（xls格式）使用相关问题进行说明，供专家填写问卷时进行参考。">
+<meta name="twitter:image" content="http://www.yaahp.com/image/survey-marco/surveyxls.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/survey-macro/"/>
+
+
+
+
+
+  <title>专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？ | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/survey-macro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T00:00:00+08:00">
+                Mar 2 2018
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  本文对可导入的专家调查问卷（xls格式）使用相关问题进行说明，供专家填写问卷时进行参考。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/survey-marco/surveyxls.png" alt="调查问卷" width="555"></p>
+<a id="more"></a>
+<h2 id="可导入的层次分析法专家调查问卷"><a href="#可导入的层次分析法专家调查问卷" class="headerlink" title="可导入的层次分析法专家调查问卷"></a>可导入的层次分析法专家调查问卷</h2><p>为了方便专家决策数据的收集和录入，yaahp可以生成可导入的调查问卷(xls)格式。这种问卷可以分发给专家，专家用Excel或高版本的WPS打开后，通过点击单元格输入判断矩阵的两两比较数据。回收专家填写过数据的调查表文件后，可以直接使用yaahp导入它们中的数据。</p>
+<h2 id="调查问卷用什么软件打开？"><a href="#调查问卷用什么软件打开？" class="headerlink" title="调查问卷用什么软件打开？"></a>调查问卷用什么软件打开？</h2><p>调查问卷可以使用微软的Excel 97及以上版本，或WPS<br> Office抢鲜版 10.1.0.5777（2016年6月8日发布）及以上版本打开。</p>
+<h2 id="为什么需要启用宏？如何启用宏？"><a href="#为什么需要启用宏？如何启用宏？" class="headerlink" title="为什么需要启用宏？如何启用宏？"></a>为什么需要启用宏？如何启用宏？</h2><h3 id="为什么需要启用宏"><a href="#为什么需要启用宏" class="headerlink" title="为什么需要启用宏"></a>为什么需要启用宏</h3><p>在yaahp生成的XLS格式AHP调查表中, 宏的作用是规范并方便专家输入数据. 专家可以通过点击两两比较行中的单元格输入比较数据, 并且这种输入方式可以保证专家输入的数据格式是正确的、yaahp能够正常导入的。</p>
+<h3 id="如何启用宏"><a href="#如何启用宏" class="headerlink" title="如何启用宏"></a>如何启用宏</h3><p>Excel中启用宏可以参考微软官方文档中两篇相关的文章：</p>
+<p><a href="https://support.office.com/zh-cn/article/启用或禁用-office-文件中的宏-12b036fd-d140-4e74-b45e-16fed1a7e5c6" target="_blank" rel="noopener">启用或禁用 Office 文件中的宏</a><br><a href="https://support.office.com/zh-cn/article/在-excel-中更改宏安全设置-a97c09d2-c082-46b8-b19f-e8621e8fe373" target="_blank" rel="noopener">在 Excel 中更改宏安全设置</a></p>
+<p>WPS Office抢鲜版（版本10.1.0.5777及以上）也可以启用VBA宏，打开带有宏的调查表文件时，会提示是否启用宏，点击启用即可。</p>
+<h2 id="如何数据输入"><a href="#如何数据输入" class="headerlink" title="如何数据输入?"></a>如何数据输入?</h2><p>在XLS格式的AHP调查表中, 对<a href="http://qa.metadecsn.com/index.php/43/" target="_blank" rel="noopener">部分单元格进行了保护</a>, 无法进行编辑, 可以编辑的单元格背景颜色是淡绿色的。</p>
+<p>填写决策数据是通过鼠标单击相应单元格完成的，可以参考这里：<a href="http://www.metadecsn.com/sd/" target="_blank" rel="noopener">Excel格式的可导入调查表填写操作演示</a>。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yaahp-11.3-release/" rel="next" title="yaahp V11.3 功能变化介绍">
+                <i class="fa fa-chevron-left"></i> yaahp V11.3 功能变化介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/group-data-in-article/" rel="prev" title="AHP群决策集结数据及其不适合作为论文中数据依据的说明">
+                AHP群决策集结数据及其不适合作为论文中数据依据的说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#可导入的层次分析法专家调查问卷"><span class="nav-number">1.</span> <span class="nav-text">可导入的层次分析法专家调查问卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调查问卷用什么软件打开？"><span class="nav-number">2.</span> <span class="nav-text">调查问卷用什么软件打开？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要启用宏？如何启用宏？"><span class="nav-number">3.</span> <span class="nav-text">为什么需要启用宏？如何启用宏？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要启用宏"><span class="nav-number">3.1.</span> <span class="nav-text">为什么需要启用宏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何启用宏"><span class="nav-number">3.2.</span> <span class="nav-text">如何启用宏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何数据输入"><span class="nav-number">4.</span> <span class="nav-text">如何数据输入?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

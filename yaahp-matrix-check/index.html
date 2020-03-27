@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="yaahp 10.1.5633新增了判断矩阵数据检查功能，通过检查各专家的判断矩阵数据，给出不一致性判断矩阵的处理建议，本文对该功能相关内容进行介绍.">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断矩阵数据检查">
+<meta property="og:url" content="http://www.yaahp.com/yaahp-matrix-check/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="yaahp 10.1.5633新增了判断矩阵数据检查功能，通过检查各专家的判断矩阵数据，给出不一致性判断矩阵的处理建议，本文对该功能相关内容进行介绍.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix-check/matrix-check-result.png">
+<meta property="og:image" content="http://www.yaahp.com/image/matrix-check/matrix-check-result.png">
+<meta property="og:updated_time" content="2018-02-24T13:41:14.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="判断矩阵数据检查">
+<meta name="twitter:description" content="yaahp 10.1.5633新增了判断矩阵数据检查功能，通过检查各专家的判断矩阵数据，给出不一致性判断矩阵的处理建议，本文对该功能相关内容进行介绍.">
+<meta name="twitter:image" content="http://www.yaahp.com/image/matrix-check/matrix-check-result.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/yaahp-matrix-check/"/>
+
+
+
+
+
+  <title>判断矩阵数据检查 | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaahp-matrix-check/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">判断矩阵数据检查</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T08:55:00+08:00">
+                May 11 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  yaahp 10.1.5633新增了判断矩阵数据检查功能，通过检查各专家的判断矩阵数据，给出不一致性判断矩阵的处理建议，本文对该功能相关内容进行介绍.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/matrix-check/matrix-check-result.png" alt="判断矩阵数据检查结果" title="判断矩阵数据检查结果" width="555"><br><a id="more"></a></p>
+<p><strong><em>转载自<a href="http://www.jeffzhang.cn" target="_blank" rel="noopener">张建华的博客</a>, 原文链接: <a href="http://www.jeffzhang.cn/yaahp-matrix-check/" target="_blank" rel="noopener">http://www.jeffzhang.cn/yaahp-matrix-check/</a>.</em></strong></p>
+<p><br></p>
+<h2 id="判断矩阵一致性描述"><a href="#判断矩阵一致性描述" class="headerlink" title="判断矩阵一致性描述"></a>判断矩阵一致性描述</h2><p>AHP中的判断矩阵是两两比较矩阵(Pairwise Comparison Matrices, PCM)，近几十年很多学者针对PCM一致性进行了大量研究，对PCM一致性的描述和计算方法有多种思路，其中最重要的两种是：A. 由Saaty提出的基于特征值的描述；B. Koczkodaj提出的基于最大错误程度的描述。前者从PCM整体的角度描述其不一致性，后者从PCM中各元素错误程度的角度描述其不一致性。</p>
+<p>在yaahp中，使用Saaty提出的基于特征值的方法来计算判断矩阵一致性，但是在自动修正不一致判断矩阵时（以及实时显示对一致性影响最大的元素时），参考了Koczkodaj的思路来度量各要素的错误程度。</p>
+<h2 id="导致判断矩阵不一致的原因分析"><a href="#导致判断矩阵不一致的原因分析" class="headerlink" title="导致判断矩阵不一致的原因分析"></a>导致判断矩阵不一致的原因分析</h2><p>专家给出的判断矩阵两两比较数据，如果<font color="red">决策专家具备相应的专业知识并且认真地进行判断</font>，那么专家给出的判断矩阵不一致性的原因有两种：</p>
+<ul>
+<li>判断矩阵中多项数据的小误差累积</li>
+</ul>
+<p>AHP中专家基于1-9标度给出的两两比较判断本身是一个模糊的判断，存在一定的误差是很正常的，例如专家给出了“比较重要”(对应1-9标度中的6)的判断，但是按照专家本意应该是6.1而不是6，判断矩阵中多个这样的误差累积起来可能就会导致判断矩阵不能满足一致性要求。</p>
+<ul>
+<li>判断矩阵中某项/几项数据的判断错误</li>
+</ul>
+<p>专家在输入数据时，有可能因为某点专业知识的欠缺或理解错误，或者由于误操作给出了错误的判断数据。这类情况在实际中也有可能发生，但正常情况下，在一个判断矩阵中这类错误的数量应该是较少的。</p>
+<h2 id="判断矩阵不一致修正的思路"><a href="#判断矩阵不一致修正的思路" class="headerlink" title="判断矩阵不一致修正的思路"></a>判断矩阵不一致修正的思路</h2><p>对于上节描述的两种导致判断矩阵不一致的原因，yaahp可以自动进行修正。</p>
+<p>对于“判断矩阵中多项数据的小误差累积”，修正的思路是以最小化对专家数据的修改为目标，对判断矩阵中各个要素进行微调，使判断矩阵满足一致性。</p>
+<p>对于“判断矩阵中某项/几项数据的判断错误”，修正的思路是寻找出判断矩阵中错误程度最高的要素，对其进行修正，如果一次修正不能达到一致，再次执行这个过程。</p>
+<h2 id="yaahp的判断矩阵数据检查功能"><a href="#yaahp的判断矩阵数据检查功能" class="headerlink" title="yaahp的判断矩阵数据检查功能"></a>yaahp的判断矩阵数据检查功能</h2><p>该功能利用上节描述的不一致修正思路，尝试对不一致的判断矩阵进行修正，并根据修正结果给出评价和相应的处理建议。</p>
+<p>在判断矩阵页面，点击工具栏的“检查判断矩阵”按钮，如果是群决策还会弹出一个窗口询问处理当前专家还是所有专家的判断矩阵，选择后会对相应的判断矩阵数据进行检查，检查结果显示在如下图所示的检查结果窗口中。</p>
+<p><img src="../image/matrix-check/matrix-check-result.png" alt="判断矩阵数据检查结果" title="判断矩阵数据检查结果" width="500"></p>
+<p>数据检查结果中将不一致判断矩阵分为下面的几类，各类都给出了进一步程度处理建议。</p>
+<ul>
+<li>最小改变(一致)</li>
+</ul>
+<p>这类判断矩阵经过最小改变修正后能够满足一致性要求，一般不需要对此判断矩阵数据做进一步处理。yaahp默认设置下能够对其进行自动修正。</p>
+<ul>
+<li>最小改变(不一致)</li>
+</ul>
+<p>通过最小改变一致性修正算法无法使此判断矩阵达到一致性要求。建议将计算参数恢复为默认设置后再次检查，恢复默认设置操作如下：按Esc键关闭当前窗口 =&gt; 点击窗口右上角”设定”按钮 =&gt;  选择”计算参数”页面，点击下方的”恢复默认设置”按钮。</p>
+<ul>
+<li>最大改进方向(改变一个要素)</li>
+</ul>
+<p>这类判断矩阵利用最大改进方向算法进行自动修正可以达到一致性要求，并且只需要修正判断矩阵中的一个数据项即可，一般不需要对此判断矩阵数据做进一步处理。yaahp默认设置下能够对其进行自动修正。</p>
+<ul>
+<li>最大改进方向(改变多个要素)</li>
+</ul>
+<p>这类数据利用最大改进方向算法进行自动修正可以达到一致性要求，但是需要修正的数据项大于1个，根据需要修正的数据所占百分比，确定进一步的处理对策。yaahp判断矩阵检查结果中这类判断矩阵具有不同颜色的图标，并根据需修正数据百分比给出相应的处理建议。</p>
+<ul>
+<li>最大改进方向(修正失败)</li>
+</ul>
+<p>这类数据无法利用最大改进方向算法进行自动修正使此判断矩阵达到一致性要求。建议重新填写或废弃此判断矩阵数据。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yaahp-sensitivity-analysis-intro/" rel="next" title="使用yaahp进行灵敏度分析">
+                <i class="fa fa-chevron-left"></i> 使用yaahp进行灵敏度分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/yaahp-fce-introduction/" rel="prev" title="结合层次分析法和模糊综合评价法的评价方法-利用yaahp">
+                结合层次分析法和模糊综合评价法的评价方法-利用yaahp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断矩阵一致性描述"><span class="nav-number">1.</span> <span class="nav-text">判断矩阵一致性描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导致判断矩阵不一致的原因分析"><span class="nav-number">2.</span> <span class="nav-text">导致判断矩阵不一致的原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断矩阵不一致修正的思路"><span class="nav-number">3.</span> <span class="nav-text">判断矩阵不一致修正的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yaahp的判断矩阵数据检查功能"><span class="nav-number">4.</span> <span class="nav-text">yaahp的判断矩阵数据检查功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

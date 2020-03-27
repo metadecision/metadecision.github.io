@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="yaahp 10提供了与层次分析法(AHP)集成的模糊综合评价法(FCE)功能.  本文对结合AHP和FCE的评价方法进行简单介绍, 并给出利用yaahp软件完成评价的操作流程.">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结合层次分析法和模糊综合评价法的评价方法-利用yaahp">
+<meta property="og:url" content="http://www.yaahp.com/yaahp-fce-introduction/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="yaahp 10提供了与层次分析法(AHP)集成的模糊综合评价法(FCE)功能.  本文对结合AHP和FCE的评价方法进行简单介绍, 并给出利用yaahp软件完成评价的操作流程.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_main1.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_ahp_second_type.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/ahp_model_for_eduation.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_gen_survey_button_withahp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_gen_survey_file_withahp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_survey_withahp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_main1.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/fce_main2.png">
+<meta property="og:image" content="http://www.yaahp.com/image/V10-fce/level_value.png">
+<meta property="og:updated_time" content="2018-02-24T13:35:19.729Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="结合层次分析法和模糊综合评价法的评价方法-利用yaahp">
+<meta name="twitter:description" content="yaahp 10提供了与层次分析法(AHP)集成的模糊综合评价法(FCE)功能.  本文对结合AHP和FCE的评价方法进行简单介绍, 并给出利用yaahp软件完成评价的操作流程.">
+<meta name="twitter:image" content="http://www.yaahp.com/image/V10-fce/fce_main1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/yaahp-fce-introduction/"/>
+
+
+
+
+
+  <title>结合层次分析法和模糊综合评价法的评价方法-利用yaahp | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaahp-fce-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">结合层次分析法和模糊综合评价法的评价方法-利用yaahp</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T01:00:00+08:00">
+                May 12 2017
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  yaahp 10提供了与层次分析法(AHP)集成的模糊综合评价法(FCE)功能.  本文对结合AHP和FCE的评价方法进行简单介绍, 并给出利用yaahp软件完成评价的操作流程.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/V10-fce/fce_main1.png" alt="数据查看-图形形式" title="数据查看-图形形式" width="700"></p>
+<a id="more"></a>
+<p><strong><em>转载自<a href="http://www.jeffzhang.cn" target="_blank" rel="noopener">张建华的博客</a>, 原文链接: <a href="http://www.jeffzhang.cn/yaahp-fce-introduction/" target="_blank" rel="noopener">http://www.jeffzhang.cn/yaahp-fce-introduction/</a>.</em></strong></p>
+<p><br></p>
+<p>独立使用的模糊综合评价法(不与AHP结合)请参考<a href="http://ahpman.metadecsn.com/manual/fce/#93-ahp" target="_blank" rel="noopener">yaahp使用手册”模糊综合评价”部分</a>.</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>模糊综合评价法(FCE)是一种根据模糊数学隶属度理论把定性评价转化为定量评价的方法. 它具有结果清晰, 系统性强的特点, 能较好地解决模糊的、难以量化的问题, 适合各种非确定性问题的解决.<br>FCE计算的前提条件之一是确定各个评价指标的权重, 也就是权向量, 它一般由决策者直接指定. 但对于复杂的问题, 例如评价指标很多并且相互之间存在影响关系,  直接给出各个评价指标的权重比较困难, 而这个问题正是AHP所擅长的.</p>
+<p>在AHP中, 通过对问题的分解, 将复杂问题分解为多个子问题, 并通过两两比较的形式给出决策数据, 最终给出备选方案的排序权重. 如果把评价指标作为AHP的备选方案, 使用AHP对问题分层建模并根据专家对此模型的决策数据进行计算, 就可以得到备选方案也就是各个评价指标的排序权重. 这样就解决了FCE中复杂评价指标权重确定的问题.</p>
+<p>实际中使用AHP-FCE时, 并不是直接给出评价指标, 评价指标的确定是通过分析问题并构造层次模型来完成. 首先利用AHP分层的思想对问题进行分解, 然后把分层后的最下一层中间层要素(准则)作为评价指标, 并将评价指标改为备选方案.</p>
+<p>下面内容首先对AHP-FCE的处理流程进行描述, 然后给出一个利用yaahp的AHP-FCE功能进行教师课堂教学质量评价的例子.</p>
+<h2 id="AHP与FCE结合的综合评价过程"><a href="#AHP与FCE结合的综合评价过程" class="headerlink" title="AHP与FCE结合的综合评价过程"></a>AHP与FCE结合的综合评价过程</h2><p>AHP和FCE结合的综合评价过程一般步骤如下:</p>
+<p><font color="blue">1)</font> 确定评价目标;</p>
+<p><font color="blue">2)</font> 以“分而治之”的思路, 对评价目标进行分解, 形成准则(Critiaria) 及评价指标(Alternatives), 并最终构造层次模型;</p>
+<p><font color="blue">3)</font> 使用这个层次模型生成AHP调查问卷, 邀请专家参与调查;</p>
+<p><font color="blue">4)</font> 收集专家们的AHP调查问卷, 得到各个评价指标对评价目标的排序权重.  至此AHP过程完成, 其中的专家调查问卷过程可以利用Delphi方法多轮完成;</p>
+<p><font color="blue">5)</font> 以层次模型的评价指标, 也就是方案层要素, 作为评价指标, 生成FCE问卷;</p>
+<p><font color="blue">6)</font> 对各个被测对象, 寻找专家/评测人填写FCE问卷;</p>
+<p><font color="blue">7)</font> 收集FCE问卷, 根据专家数据及AHP获得的各个评价指标排序权重 (作为FCE的权向量), 计算得到各被测对象的综合评价结果。<br>其中1-4为AHP过程, 5-7步是FCE 过程。</p>
+<h2 id="教学质量评价示例"><a href="#教学质量评价示例" class="headerlink" title="教学质量评价示例"></a>教学质量评价示例</h2><p>这部分以一个教师课堂教学质量评价案例为例, 给出使用yaahp进行AHP-FCE评价的示例. 该案例使用的层次模型在文献<a href="http://www.jeffzhang.cn/yaahp-fce-introduction/#参考文献" target="_blank" rel="noopener">[1]</a>所提模型的基础上做了部分修改.</p>
+<h3 id="构造层次模型"><a href="#构造层次模型" class="headerlink" title="构造层次模型"></a>构造层次模型</h3><p>首先对教师课堂教学质量评价进行分析, 构造该问题的层次模型, 如下图所示.</p>
+<p><font color="red">注意: 方案层要素为模糊综合评价的各个评价指标.</font><br><img src="../image/V10-fce/fce_ahp_second_type.png" alt="教师课堂教学质量评价" title="教师课堂教学质量评价" width="500"></p>
+<h3 id="收集专家数据计算排序权重"><a href="#收集专家数据计算排序权重" class="headerlink" title="收集专家数据计算排序权重"></a>收集专家数据计算排序权重</h3><p>生成AHP调查问卷(详见<a href="http://ahp.jeffzhang.cn/manual/survey/" target="_blank" rel="noopener">yaahp使用手册”调查问卷”部分</a>), 向专家分发. 专家填写完毕后回收调查问卷并导入yaahp, 经过计算, 得到的各个评价指标排序权重如下图.<br><img src="../image/V10-fce/ahp_model_for_eduation.png" alt="教师课堂教学质量评价排序权重" title="教师课堂教学质量评价排序权重" width="700"></p>
+<h3 id="生成评测问卷"><a href="#生成评测问卷" class="headerlink" title="生成评测问卷"></a>生成评测问卷</h3><p>得到教学质量评价排序权重后, 在yaahp的计算结果页面可以发现“生成评测表”按钮, 如下图所示。<br><img src="../image/V10-fce/fce_gen_survey_button_withahp.png" alt="生成评测问卷" title="生成评测问卷" width="700"><br>点击“生成评测表”按钮将会打开FCE评测表设定窗口。AHP-FCE的FCE 评测表设定窗口与独立FCE评测表设定窗口相比,不需要输入权向量, 因为权向量直接使用AHP计算结果的排序权重。详见<a href="http://ahp.jeffzhang.cn/manual/fce/" target="_blank" rel="noopener">yaahp使用手册”模糊综合评价”部分</a>.<br><img src="../image/V10-fce/fce_gen_survey_file_withahp.png" alt="评测表设定" title="评测表设定" width="500"><br>生成的评测表如下图所示.<br><img src="../image/V10-fce/fce_survey_withahp.png" alt="评测表" title="评测表" width="700"></p>
+<h3 id="填写并导入评测问卷"><a href="#填写并导入评测问卷" class="headerlink" title="填写并导入评测问卷"></a>填写并导入评测问卷</h3><p>将生成的评测表分发给各个评测人, 评测人用Excel打开该文件将被测对象评测数据填入评测表。<br>回收评测表后, 使用模糊综合评价的“导入”功能, 导入的所有的评测问卷。</p>
+<h3 id="模糊综合评价结果"><a href="#模糊综合评价结果" class="headerlink" title="模糊综合评价结果"></a>模糊综合评价结果</h3><p>导入数据后会打开FCE窗口, 如下图, 各个被测对象的综合评价分值显示在左侧列表中. 此外, 在中间区域可以看到层次模型中各个要素的评价值, 下图可以看出李老师的”教学效果”得分较低.<br><img src="../image/V10-fce/fce_main1.png" alt="数据查看-图形形式" title="数据查看-图形形式" width="700"><br>除了图形形式的详细得分情况外, 还可以用表格形式查看, 如下图.<br><img src="../image/V10-fce/fce_main2.png" alt="数据查看-表格形式" title="数据查看-表格形式" width="700"></p>
+<h3 id="修改评价等级论域"><a href="#修改评价等级论域" class="headerlink" title="修改评价等级论域"></a>修改评价等级论域</h3><p>在模糊综合评价计算中, 最后一个计算步骤是去模糊, 从而得到最终的评价分值. 去模糊有多种方法可用, 一般常用的是设定评价等级论域然后加权平均, yaahp中采用了这种方法.<br>设定评价等级论域也就是为各个评价等级设定分值, yaahp中可以在FCE计算结果右侧上方的表格中进行设定, 如下图所示.<br><img src="../image/V10-fce/level_value.png" alt="评价等级论域设定" title="评价等级论域设定" width="200"><br>评价等级论域设定修改后, 综合评价结果和详细得分情况会实时更新。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 丁家玲, 叶金华. 层次分析法和模糊综合评判在教师课堂教学质量评价中的应用[J]. 武汉大学学报: 哲学社会科学版, 2003, 56(2): 241-245.</p>
+<h2 id="Copyright"><a href="#Copyright" class="headerlink" title="Copyright"></a>Copyright</h2><p>本文版权归张建华(Jianhua Zhang、两招)所有，转载或引用请注明出处.<br>本文引用信息:<br>张建华. 结合层次分析法和模糊综合评价法的评价方法-利用yaahp[OL]. <a href="http://www.jeffzhang.cn/yaahp-fce-introduction" target="_blank" rel="noopener">http://www.jeffzhang.cn/yaahp-fce-introduction</a>, 2015-03-25.<br>Zhang Jianhua. Combination evaluation method of Analytic Hierarchy Process and Fuzzy Comprehensive Evaluation based on yaahp[OL]. Available: <a href="http://www.jeffzhang.cn/yaahp-fce-introduction" target="_blank" rel="noopener">http://www.jeffzhang.cn/yaahp-fce-introduction</a>, March 25, 2015.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/yaahp-matrix-check/" rel="next" title="判断矩阵数据检查">
+                <i class="fa fa-chevron-left"></i> 判断矩阵数据检查
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/yaahp-calc-crash/" rel="prev" title="yaahp执行计算时异常退出的解决方法">
+                yaahp执行计算时异常退出的解决方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AHP与FCE结合的综合评价过程"><span class="nav-number">2.</span> <span class="nav-text">AHP与FCE结合的综合评价过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教学质量评价示例"><span class="nav-number">3.</span> <span class="nav-text">教学质量评价示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造层次模型"><span class="nav-number">3.1.</span> <span class="nav-text">构造层次模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收集专家数据计算排序权重"><span class="nav-number">3.2.</span> <span class="nav-text">收集专家数据计算排序权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成评测问卷"><span class="nav-number">3.3.</span> <span class="nav-text">生成评测问卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填写并导入评测问卷"><span class="nav-number">3.4.</span> <span class="nav-text">填写并导入评测问卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模糊综合评价结果"><span class="nav-number">3.5.</span> <span class="nav-text">模糊综合评价结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改评价等级论域"><span class="nav-number">3.6.</span> <span class="nav-text">修改评价等级论域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Copyright"><span class="nav-number">5.</span> <span class="nav-text">Copyright</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

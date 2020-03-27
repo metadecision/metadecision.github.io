@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="yaahp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="博客@元决策软件" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文对yaahp V11.3功能新增、修改以及Bug修复情况进行介绍.">
+<meta name="keywords" content="yaahp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yaahp V11.3 功能变化介绍">
+<meta property="og:url" content="http://www.yaahp.com/yaahp-11.3-release/index.html">
+<meta property="og:site_name" content="博客@元决策软件">
+<meta property="og:description" content="本文对yaahp V11.3功能新增、修改以及Bug修复情况进行介绍.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yaahp.com/image/release/comb-cons.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/comb-cons.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/ri-setting.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/survey-setting.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/agg-result.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/element-prop.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/find.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/qa2.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/112vs113.png">
+<meta property="og:image" content="http://www.yaahp.com/image/release/112vs113-result.png">
+<meta property="og:updated_time" content="2018-02-28T10:39:26.383Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yaahp V11.3 功能变化介绍">
+<meta name="twitter:description" content="本文对yaahp V11.3功能新增、修改以及Bug修复情况进行介绍.">
+<meta name="twitter:image" content="http://www.yaahp.com/image/release/comb-cons.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yaahp.com/yaahp-11.3-release/"/>
+
+
+
+
+
+  <title>yaahp V11.3 功能变化介绍 | 博客@元决策软件</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博客@元决策软件</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="http://www.metadecsn.com/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-product">
+          <a href="http://www.metadecsn.com/product/" rel="section">
+            
+            产品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-service">
+          <a href="http://www.metadecsn.com/service/" rel="section">
+            
+            服务
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-docs">
+          <a href="http://www.metadecsn.com/documents/" rel="section">
+            
+            文档中心
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-blog">
+          <a href="/" rel="section">
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-store">
+          <a href="http://www.metadecsn.com/store/" rel="section">
+            
+            在线商店
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-download">
+          <a href="http://www.metadecsn.com/download/" rel="section">
+            
+            软件下载
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="http://www.metadecsn.com/about/" rel="section">
+            
+            关于我们
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaahp-11.3-release/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="山西元决策软件科技有限公司">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-earth.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="博客@元决策软件">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">yaahp V11.3 功能变化介绍</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-28T00:00:00+08:00">
+                Feb 28 2018
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AHP/" itemprop="url" rel="index">
+                    <span itemprop="name">AHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  本文对yaahp V11.3功能新增、修改以及Bug修复情况进行介绍.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="../image/release/comb-cons.png" alt="组合一致性比例" width="555"></p>
+<a id="more"></a>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>yaahp V11.3 修复两处严重错误Bug、多处其它Bug，并新增和改进多个用户反馈中需求的功能特性。</p>
+<font color="red">建议所有用户升级！</font> <a href="http://www.metadecsn.com/download/" target="_blank" rel="noopener">下载yaahp</a><br><br>正式版用户下载V11.3 Setup 安装升级后，再次输入序列号即可。<br><br>## 新增功能介绍<br><br>1. 新增：计算结果详细数据中，增加各准则层组合一致性数据的展示。对于群决策计算结果，可以展示集结数据和各专家的组合一致性数据；<br><img src="../image/release/comb-cons.png" alt="组合一致性比例" title="组合一致性比例"><br><br>2. 新增：随机一致性指标RI可以在选项中进行设定，并可以重置为默认值；<br><img src="../image/release/ri-setting.png" alt="RI设定" title="RI设定" width="555"><br><br>3. 新增：生成AHP调查问卷及和FCE评测表时，可以选择说明文字是否锁定，如果不锁定则用户可以编辑生成问卷/评测表中的要素/评价指标说明文字，可编辑的说明文字单元格背景颜色为白色；<br><img src="../image/release/survey-setting.png" alt="是否锁定问卷说明文字" title="是否锁定问卷说明文字" width="555"><br><br>4. 新增：计算结果集结的群决策计算详细结果中，也显示集结后的数据，所显示判断矩阵只显示各要素的wi，不显示判断矩阵内容（因为计算结果集结没有集结后的判断矩阵）；<br><img src="../image/release/agg-result.png" alt="计算结果集结数据" title="计算结果集结数据"><br><br>5. 新增：层次模型编辑器中，右侧增加要素属性窗口，如果选中了一个要素，属性窗口中显示该要素的文本和说明文字，方便修改。该属性窗口可以通过点击工具栏相应按钮隐藏或显示；<br><img src="../image/release/element-prop.png" alt="要素属性编辑" title="要素属性编辑"><br><br>6. 新增：层次模型中根据要素文本或要素说明文字查找要素的功能，查找后将选中满足条件的要素；<br><img src="../image/release/find.png" alt="要素查找" title="要素查找"><br><br>7. 新增：软件快速功能窗口增加提问/常见问题按钮，点击后会打开元决策问答网站，可以在这里查询问题解答或提出问题。<br><img src="../image/release/qa2.png" alt="问答" title="问答"><br><br>## Bug修复说明<br><br>### 两处严重错误：<br><br>* 修正：<font color="red">群决策数据专家数据检查时，应当只有在不同专家判断跨越同等重要(1)的比较等级情况下才认为“判断相反”。现在同等重要(1)与小于1的重要性等级也被认为“判断相反”；</font>
+
+
+<pre><code>对同一个“过河收益”案例存盘文件数据，下图左侧为V11.2的群决策专家数据检查结果，可以看出第一组数据被错误地认为“判断相反”（也就是各个专家对一个两两比较给出了相反的意见）。作为对比的下图右侧V11.3中不会再将此项数据认为“判断相反”。
+</code></pre><p><img src="../image/release/112vs113.png" alt="群决策专家数据检查-判断相反bug" title="群决策专家数据检查-判断相反bug"></p>
+<ul>
+<li>修正：<font color="red">群决策判断矩阵集结计算结果中，集结后的判断矩阵数据数据显示错误的bug。该bug将第一个专家的对应数据错误地显示为集结后数据的未修正数据，从而使集结后的判断矩阵看起来被修正过，而实际计算中判断矩阵集结后的数据是不进行修正的（各个专家数据在集结前会修正）；</font></li>
+</ul>
+<p><img src="../image/release/112vs113-result.png" alt="判断矩阵集结数据展示bug" title="判断矩阵集结数据展示bug"></p>
+<h3 id="其他的bug修复："><a href="#其他的bug修复：" class="headerlink" title="其他的bug修复："></a>其他的bug修复：</h3><ul>
+<li>修正：当模型非常大时，生成AHP调查问卷失败的bug；</li>
+<li>修正：当模型中存在特殊连接结构时，如果存在不一致判断矩阵并未标记为自动修正，在判断矩阵窗口下方的错误信息窗口中双击错误信息定位到相应判断矩阵时软件失去响应的bug；</li>
+<li>修正：文本修改：”中间层要素”改为”准则层要素”。以及其他多处错误或不够明确的提示信息文本；</li>
+<li>修正：模型编辑时，复制粘贴要素并没有复制要素的说明文本。</li>
+</ul>
+<h2 id="功能改进"><a href="#功能改进" class="headerlink" title="功能改进"></a>功能改进</h2><ol>
+<li>修改：为AHP调查问卷中的调查表“需要开启宏”提示和演示链接单元格增加超链接，点击该单元格可以在浏览器中打开调查表使用演示页面；</li>
+<li>修改：判断矩阵页面默认不显示要素说明文本，但增加明显的”显示/隐藏要素说明文本”按钮（之前只能通过双击拖动条上下方的要素文本切换显示和隐藏说明文字）；</li>
+<li>修改：层次模型绘图板的缩小和恢复原始尺寸移至放大按钮的子按钮中，进一步利用工具栏空间；</li>
+<li>修改：租用版不再显示“转移使用授权”，避免由于误操作导致使用授权无效。</li>
+<li>修改：生成的AHP和FCE可导入问卷中，改进描述文本，使含义更明确（姓名、单位等后面加个冒号）；</li>
+<li>修改：存盘文件中的模型截图质量降低为80%、尺寸降低到60%；</li>
+<li>修改：层次模型绘制界面工具栏中，将阴影复选框改为统一风格的Checkable按钮，并调整工具栏按钮组合和顺序；</li>
+<li>修改：软件卸载时不再卸载正式版使用授权文件，这样在重新安装软件后不再需要重新输入序列号或导入使用授权文件。</li>
+</ol>
+<h2 id="完整的Changelogs列表"><a href="#完整的Changelogs列表" class="headerlink" title="完整的Changelogs列表"></a>完整的Changelogs列表</h2><p>V11.3 2018-02-27</p>
+<ol>
+<li>新增：计算结果详细数据中，增加各准则层组合一致性数据的展示。对于群决策计算结果，可以展示集结数据和各专家的组合一致性数据；</li>
+<li>新增：随机一致性指标RI可以在选项中进行设定，并可以重置为默认值；</li>
+<li>新增：生成AHP调查问卷及和FCE评测表时，可以选择说明文字是否锁定，如果不锁定则用户可以编辑生成问卷/评测表中的要素/评价指标说明文字，可编辑的说明文字单元格背景颜色为白色；</li>
+<li>新增：计算结果集结的群决策计算详细结果中，也显示集结后的数据，所显示判断矩阵只显示各要素的wi，不显示判断矩阵内容（因为计算结果集结没有集结后的判断矩阵）；</li>
+<li>新增：层次模型编辑器中，右侧增加要素属性窗口，如果选中了一个要素，属性窗口中显示该要素的文本和说明文字，方便修改。该属性窗口可以通过点击工具栏相应按钮隐藏或显示；</li>
+<li>新增：层次模型中根据要素文本或要素说明文字查找要素的功能，查找后将选中满足条件的要素；</li>
+<li>新增：软件快速功能窗口增加提问/常见问题按钮，点击后会打开元决策问答网站，可以在这里查询问题解答或提出问题。</li>
+<li>修改：为AHP调查问卷中的调查表“需要开启宏”提示和演示链接单元格增加超链接，点击该单元格可以在浏览器中打开调查表使用演示页面；</li>
+<li>修改：判断矩阵页面默认不显示要素说明文本，但增加明显的”显示/隐藏要素说明文本”按钮（之前只能通过双击拖动条上下方的要素文本切换显示和隐藏说明文字）；</li>
+<li>修改：层次模型绘图板的缩小和恢复原始尺寸移至放大按钮的子按钮中，进一步利用工具栏空间；</li>
+<li>修改：租用版不再显示“转移使用授权”，避免由于误操作导致使用授权无效。</li>
+<li>修改：生成的AHP和FCE可导入问卷中，改进描述文本，使含义更明确（姓名、单位等后面加个冒号）；</li>
+<li>修改：存盘文件中的模型截图质量降低为80%、尺寸降低到60%；</li>
+<li>修改：层次模型绘制界面工具栏中，将阴影复选框改为统一风格的Checkable按钮，并调整工具栏按钮组合和顺序；</li>
+<li>修改：软件卸载时不再卸载正式版使用授权文件，这样在重新安装软件后不再需要重新输入序列号或导入使用授权文件。</li>
+<li>修正：群决策数据专家数据检查时，应当只有在不同专家判断跨越同等重要(1)的比较等级情况下才认为“判断相反”。现在同等重要(1)与小于1的重要性等级也被认为“判断相反”；</li>
+<li>修正：群决策判断矩阵集结计算结果中，集结后的判断矩阵数据数据显示错误的bug。该bug将第一个专家的对应数据错误地显示为集结后数据的未修正数据，从而使集结后的判断矩阵看起来被修正过，而实际计算中判断矩阵集结后的数据是不进行修正的（各个专家数据在集结前会修正）；</li>
+<li>修正：当模型非常大时，生成AHP调查问卷失败的bug；</li>
+<li>修正：当模型中存在特殊连接结构时，如果存在不一致判断矩阵并未标记为自动修正，在判断矩阵窗口下方的错误信息窗口中双击错误信息定位到相应判断矩阵时软件失去响应的bug；</li>
+<li>修正：文本修改：”中间层要素”改为”准则层要素”。以及其他多处错误或不够明确的提示信息文本；</li>
+<li>修正：模型编辑时，复制粘贴要素并没有复制要素的说明文本。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/serial-active/" rel="next" title="装有某些安全软件的系统无法成功激活yaahp序列号的解决办法">
+                <i class="fa fa-chevron-left"></i> 装有某些安全软件的系统无法成功激活yaahp序列号的解决办法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/survey-macro/" rel="prev" title="专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？">
+                专家调查问卷用什么打开？怎么启用宏？怎么输入决策数据？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-earth.png"
+                alt="山西元决策软件科技有限公司" />
+            
+              <p class="site-author-name" itemprop="name">山西元决策软件科技有限公司</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#其他的bug修复："><span class="nav-number">1.1.</span> <span class="nav-text">其他的bug修复：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能改进"><span class="nav-number">2.</span> <span class="nav-text">功能改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整的Changelogs列表"><span class="nav-number">3.</span> <span class="nav-text">完整的Changelogs列表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <table class="mytable">
+<tr>
+<td>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山西元决策软件科技有限公司</span>
+
+  
+</div>
+
+<div >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晋ICP备17002926号-1
+<br/>
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14019902000133"><img src="../image/beian/beian.png" style="float:left;"/>晋公网安备 14019902000133号</a>
+</div>
+</td>
+<td>EMail: hi@metadecsn.com<br/>
+QQ: 895362260  (服务时间：周一至周五 9:00-17:00)<br/>
+Tel: 0351-2286129  (服务时间：周一至周五 9:00-17:00)<br/>
+Addr: 太原市高新区振兴街11号五峰国际1416</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
