@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="yaahp," />
+  <meta name="keywords" content="yaanp," />
 
 
 
@@ -81,20 +81,32 @@
 
 
 
-<meta name="description" content="yaahp曾经规划过模糊层次分析法功能, 但后来取消了, 本文对此进行简要说明.">
-<meta name="keywords" content="yaahp">
+<meta name="description" content="本文通过一个案例， 对Super Decisions和yaanp的计算结果进行比较。 如果不对不一致判断矩阵进行修正， yaanp与Super Decisions的计算结果完全一致。">
+<meta name="keywords" content="yaanp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="需要模糊层次分析法吗?">
-<meta property="og:url" content="http://www.yaahp.com/Do-we-need-FAHP/index.html">
+<meta property="og:title" content="yaanp &amp; SuperDecision网络分析法计算结果比较">
+<meta property="og:url" content="http://www.yaahp.com/yaanp_and_sd/index.html">
 <meta property="og:site_name" content="博客@元决策软件">
-<meta property="og:description" content="yaahp曾经规划过模糊层次分析法功能, 但后来取消了, 本文对此进行简要说明.">
+<meta property="og:description" content="本文通过一个案例， 对Super Decisions和yaanp的计算结果进行比较。 如果不对不一致判断矩阵进行修正， yaanp与Super Decisions的计算结果完全一致。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.yaahp.com/image/fuzzy/fuzzy-face.png">
-<meta property="og:updated_time" content="2018-02-24T13:29:00.779Z">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/face.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/model_yaanp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/model_sd.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/pre_calc.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/face.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/cluster_yaanp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/cluster_sd.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/unweighted_yaanp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/unweighted_sd.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/weighted_yaanp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/weighted_sd.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/limit_yaanp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_and_sd/limit_sd.png">
+<meta property="og:updated_time" content="2020-06-19T14:08:23.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="需要模糊层次分析法吗?">
-<meta name="twitter:description" content="yaahp曾经规划过模糊层次分析法功能, 但后来取消了, 本文对此进行简要说明.">
-<meta name="twitter:image" content="http://www.yaahp.com/image/fuzzy/fuzzy-face.png">
+<meta name="twitter:title" content="yaanp &amp; SuperDecision网络分析法计算结果比较">
+<meta name="twitter:description" content="本文通过一个案例， 对Super Decisions和yaanp的计算结果进行比较。 如果不对不一致判断矩阵进行修正， yaanp与Super Decisions的计算结果完全一致。">
+<meta name="twitter:image" content="http://www.yaahp.com/image/yaanp_and_sd/face.png">
 
 
 
@@ -124,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://www.yaahp.com/Do-we-need-FAHP/"/>
+  <link rel="canonical" href="http://www.yaahp.com/yaanp_and_sd/"/>
 
 
 
 
 
-  <title>需要模糊层次分析法吗? | 博客@元决策软件</title>
+  <title>yaanp & SuperDecision网络分析法计算结果比较 | 博客@元决策软件</title>
   
 
 
@@ -281,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/Do-we-need-FAHP/">
+    <link itemprop="mainEntityOfPage" href="http://www.yaahp.com/yaanp_and_sd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="山西元决策软件科技有限公司">
@@ -298,7 +310,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">需要模糊层次分析法吗?</h2>
+          <h2 class="post-title" itemprop="name headline">yaanp & SuperDecision网络分析法计算结果比较</h2>
         
 
         <div class="post-meta">
@@ -310,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T00:00:00+08:00">
-                May 11 2017
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T00:00:00+08:00">
+                Jun 19 2020
               </time>
             
 
@@ -333,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AHP/" itemprop="url" rel="index">
-                    <span itemprop="name">AHP</span>
+                  <a href="/categories/ANP/" itemprop="url" rel="index">
+                    <span itemprop="name">ANP</span>
                   </a>
                 </span>
 
@@ -357,7 +369,7 @@
 
           
               <div class="post-description">
-                  yaahp曾经规划过模糊层次分析法功能, 但后来取消了, 本文对此进行简要说明.
+                  本文通过一个案例， 对Super Decisions和yaanp的计算结果进行比较。 如果不对不一致判断矩阵进行修正， yaanp与Super Decisions的计算结果完全一致。
               </div>
           
 
@@ -374,35 +386,40 @@
       
 
       
-        <p><img src="../image/fuzzy/fuzzy-face.png" alt="模糊" width="555"><br><a id="more"></a></p>
-<p><strong><em>转载自<a href="http://www.jeffzhang.cn" target="_blank" rel="noopener">张建华的博客</a>, 原文链接: <a href="http://www.jeffzhang.cn/Do-we-need-FAHP/" target="_blank" rel="noopener">http://www.jeffzhang.cn/Do-we-need-FAHP/</a>.</em></strong></p>
-<p><br></p>
-<p>yaahp曾经规划过模糊层次分析法(<em>Fuzzy Analytic Hierarchy Process, FAHP</em>)功能, 但还没有开发完成就取消了, 原因是我认为<strong><font color="blue">不需要FAHP</font></strong>.</p>
-<p><strong><em>注: 这里所说的模糊层次分析法(FAHP)指判断矩阵中的两两比较数据使用模糊数表示, 例如三角模糊数(3,5,6), 而不是AHP与模糊综合评价法(FCE)结合的综合评价方法.  yaahp提供了<a href="http://www.jeffzhang.cn/yaahp-fce-introduction/" target="_blank" rel="noopener">结合AHP和FCE的综合评价方法</a>.</em></strong></p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>关于模糊层次分析法的研究很多, 可以检索到大量的的相关文献. 但是AHP理论提出者Thomas L. Saaty对此有不同的意见, 并分别于2006年<sup><font color="red">[1]</font></sup>, 2007年<sup><font color="red">[2]</font></sup>, 2010年<sup><font color="red">[3]</font></sup>发表三篇论文讨论了FAHP的有效性. 此外, 合肥工业大学的朱克毓博士在其攻读博士学位期间对此问题进行了深入研究<sup><font color="red">[4-6]</font></sup>.</p>
-<p>希望进一步了解可以查阅参考文献.</p>
-<h2 id="FAHP提出"><a href="#FAHP提出" class="headerlink" title="FAHP提出"></a>FAHP提出</h2><p>FAHP提出时主要针对AHP的两个”问题”:</p>
+        <p><img src="../image/yaanp_and_sd/face.png" alt="排序权重"></p>
+<a id="more"></a>
+<p>Super Decisions有一个Beer Marketshare示例， 本文在yaanp中根据该示例构建同样的网络模型，并输入同样的判断矩阵数据。 在计算时，选择不进行一致性修正，yaanp与Super Decisions的计算结果完全一致。</p>
+<h2 id="构建模型、输入判断矩阵数据"><a href="#构建模型、输入判断矩阵数据" class="headerlink" title="构建模型、输入判断矩阵数据"></a>构建模型、输入判断矩阵数据</h2><p>在yaanp中创建一个单网络模型，然后构建与Super Decisions的Beer Marketshare示例完全一致的网络模型模型，如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/model_yaanp.png" alt="yaanp模型" width="555"></p>
+<p>可以使用Super Decisions打开Beer Marketshare示例(Beer_marketshare_network.sdmod)查看其模型，如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/model_sd.png" alt="SD模型" width="555"></p>
+<p>按照示例中的判断矩阵两两比较数据，利用yaanp的判断矩阵数据输入功能，输入判断矩阵两两比较数据。</p>
+<p>原始的Beer Marketshare示例中有很多不一致的判断矩阵，yaanp中开始计算时会显示处理窗口。由于Super Decisions没有一致性自动修正功能，所以这里选择不修正。选择下图红框中的“直接计算不一致的判断矩阵(不做修正)”。</p>
+<p><img src="../image/yaanp_and_sd/pre_calc.png" alt="计算前数据处理" width="555"></p>
+<h2 id="排序权重"><a href="#排序权重" class="headerlink" title="排序权重"></a>排序权重</h2><p>计算完成后，yaanp会自动切换到计算结果显示界面，显示各要素的排序权重。<br>下图中，左侧为yaanp的排序权重列表显示截图，右侧为Super Decisions的Priorities窗口截图，可以看出计算结果完全相同。图中结果是yaanp中判断矩阵计算方法选择为“幂法”的情况，如果选择和法或根法，会有一些差别。</p>
+<p><img src="../image/yaanp_and_sd/face.png" alt="计算结果对比"></p>
+<h2 id="矩阵数据"><a href="#矩阵数据" class="headerlink" title="矩阵数据"></a>矩阵数据</h2><p>计算过程中的簇权重数据、未赋权超矩阵、赋权超矩阵和极限矩阵数据，yaanp与Super Decisions也完全相同。</p>
+<h3 id="簇权重矩阵"><a href="#簇权重矩阵" class="headerlink" title="簇权重矩阵"></a>簇权重矩阵</h3><p>yaanp的簇权重矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/cluster_yaanp.png" alt="yaanp簇权重矩阵"></p>
+<p>Super Decisions的簇权重矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/cluster_sd.png" alt="Super Decisions簇权重矩阵"></p>
+<h3 id="未赋权超矩阵"><a href="#未赋权超矩阵" class="headerlink" title="未赋权超矩阵"></a>未赋权超矩阵</h3><p>yaanp的未赋权超矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/unweighted_yaanp.png" alt="yaanp未赋权超矩阵"></p>
+<p>Super Decisions的未赋权超矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/unweighted_sd.png" alt="Super Decisions未赋权超矩阵"></p>
+<h3 id="赋权超矩阵"><a href="#赋权超矩阵" class="headerlink" title="赋权超矩阵"></a>赋权超矩阵</h3><p>yaanp的赋权超矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/weighted_yaanp.png" alt="yaanp赋权超矩阵"></p>
+<p>Super Decisions的赋权超矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/weighted_sd.png" alt="Super Decisions赋权超矩阵"></p>
+<h3 id="极限矩阵"><a href="#极限矩阵" class="headerlink" title="极限矩阵"></a>极限矩阵</h3><p>yaanp的极限矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/limit_yaanp.png" alt="yaanp极限矩阵"></p>
+<p>Super Decisions的赋权超矩阵如下图所示。</p>
+<p><img src="../image/yaanp_and_sd/limit_sd.png" alt="Super Decisions极限矩阵"></p>
+<h2 id="存盘文件"><a href="#存盘文件" class="headerlink" title="存盘文件"></a>存盘文件</h2><p>如果有兴趣，可以下载本文示例的存盘文件、打开查看其中详细内容。</p>
 <ul>
-<li>判断矩阵一致性检验缺乏科学依据并且过程繁琐;</li>
-<li>1-9标度不能反映人的主观判断的模糊性;</li>
+<li>Beer Marketshare示例的yaanp存盘文件下载：<a href="http://download.metadecsn.com/beer.anpx" target="_blank" rel="noopener">beer.anpx</a>；</li>
+<li>Super Decisions的这个示例存盘文件存放在它的安装文件夹下的samples文件夹中： samples/3_ANP_modles/Beer_marketshare_network.sdmod。</li>
 </ul>
-<p>第一个问题确实是存在的, 但FAHP也没有解决; 对于第二个问题, FAHP引入进一步的模糊化处理, 使问题复杂化, 但没有获得更好的效果, 相比起来, 1-9标度的模糊处理反而显得更加简单有效.</p>
-<h2 id="Saaty对于FAHP的观点"><a href="#Saaty对于FAHP的观点" class="headerlink" title="Saaty对于FAHP的观点"></a>Saaty对于FAHP的观点</h2><p>Saaty的三篇论文从几个角度讨论了FAHP的有效性.</p>
-<ul>
-<li>缺乏数理有效性</li>
-<li>模糊化判断矩阵意义不大</li>
-<li>改善一致性但没有考虑结果的有效性</li>
-</ul>
-<h3 id="缺乏数理有效性"><a href="#缺乏数理有效性" class="headerlink" title="缺乏数理有效性"></a>缺乏数理有效性</h3><p>理论论证, 参见参考文献.</p>
-<h3 id="模糊化判断矩阵意义不大"><a href="#模糊化判断矩阵意义不大" class="headerlink" title="模糊化判断矩阵意义不大"></a>模糊化判断矩阵意义不大</h3><p>因为1-9标度中各个标度对应的是要素两两比较的”同样重要”, 比较重要”,”明显重要”等关系, 已经是模糊的表示, 例如”A方案比B方案明显重要”就是模糊的判断.<br>FAHP将这些已经是模糊的数据进一步模糊化, 只是产生更大的不确定性,  并不是模糊性从无到有, 意义并不大.</p>
-<h3 id="改善一致性但没有考虑结果的有效性"><a href="#改善一致性但没有考虑结果的有效性" class="headerlink" title="改善一致性但没有考虑结果的有效性"></a>改善一致性但没有考虑结果的有效性</h3><p>进一步的模糊化虽然改进了判断矩阵的一致性, 但没有考虑结果的有效性, 并不能确定能够获得更好的决策结果.<br>yaahp之前版本除了1-9标度外, 还提供一种指数标度. 后来的版本去掉了这种指数标度, 也是出于类似的考虑, 使用这种指数标度虽然可以增强判断矩阵的一致性, 但对决策结果的改善没有帮助, 反而增加很多计算和操作的复杂性.</p>
-<h2 id="需要FAHP吗"><a href="#需要FAHP吗" class="headerlink" title="需要FAHP吗?"></a>需要FAHP吗?</h2><p>不能认为FAHP有效地解决AHP存在的问题, 但是可以确定FAHP增加了复杂度,  所以我认为<strong><font color="blue">不需要FAHP</font></strong>.</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Saaty T L. There is no mathematical validity for using fuzzy number crunching in the analytic hierarchy process[J]. Journal of Systems Science and Systems Engineering, 2006, 15(4): 457-464.</p>
-<p>[2] Saaty T L, Tran L T. On the invalidity of fuzzifying numerical judgments in the Analytic Hierarchy Process[J]. Mathematical and Computer Modelling, 2007, 46(7): 962-975.</p>
-<p>[3] Saaty T L, Tran L T. Fuzzy judgments and fuzzy sets[J]. International Journal of Strategic Decision Sciences (IJSDS), 2010, 1(1): 23-40.</p>
-<p>[4] Zhü K. Fuzzy analytic hierarchy process: Fallacy of the popular methods[J]. European Journal of Operational Research, 2014, 236(1): 209-217.</p>
-<p>[5] 朱克毓, 杨善林. 关于 Saaty 对模糊逻辑不适用于 AHP 观点的评述[J]. 系统工程理论与实践, 2014, 34(1): 197-206.</p>
-<p>[6] 朱克毓. 模糊 AHP 的无效性与基于几何加权的 AHP 方法研究[D]. 合肥工业大学, 2012.</p>
 
       
     </div>
@@ -420,7 +437,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/yaahp/" rel="tag"># yaahp</a>
+            <a href="/tags/yaanp/" rel="tag"># yaanp</a>
           
         </div>
       
@@ -433,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/yaahp-sensitivity-analysis-intro/" rel="next" title="使用yaahp进行灵敏度分析">
-                <i class="fa fa-chevron-left"></i> 使用yaahp进行灵敏度分析
+              <a href="/yaahp-xls-survey/" rel="next" title="可导入的Excel格式调查问卷相关问题说明">
+                <i class="fa fa-chevron-left"></i> 可导入的Excel格式调查问卷相关问题说明
               </a>
             
           </div>
@@ -442,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/yaahp-matrix-check/" rel="prev" title="判断矩阵数据检查">
-                判断矩阵数据检查 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +627,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAHP提出"><span class="nav-number">2.</span> <span class="nav-text">FAHP提出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Saaty对于FAHP的观点"><span class="nav-number">3.</span> <span class="nav-text">Saaty对于FAHP的观点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺乏数理有效性"><span class="nav-number">3.1.</span> <span class="nav-text">缺乏数理有效性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模糊化判断矩阵意义不大"><span class="nav-number">3.2.</span> <span class="nav-text">模糊化判断矩阵意义不大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改善一致性但没有考虑结果的有效性"><span class="nav-number">3.3.</span> <span class="nav-text">改善一致性但没有考虑结果的有效性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要FAHP吗"><span class="nav-number">4.</span> <span class="nav-text">需要FAHP吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建模型、输入判断矩阵数据"><span class="nav-number">1.</span> <span class="nav-text">构建模型、输入判断矩阵数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序权重"><span class="nav-number">2.</span> <span class="nav-text">排序权重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵数据"><span class="nav-number">3.</span> <span class="nav-text">矩阵数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#簇权重矩阵"><span class="nav-number">3.1.</span> <span class="nav-text">簇权重矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未赋权超矩阵"><span class="nav-number">3.2.</span> <span class="nav-text">未赋权超矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋权超矩阵"><span class="nav-number">3.3.</span> <span class="nav-text">赋权超矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#极限矩阵"><span class="nav-number">3.4.</span> <span class="nav-text">极限矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存盘文件"><span class="nav-number">4.</span> <span class="nav-text">存盘文件</span></a></li></ol></div>
             
 
           </div>
