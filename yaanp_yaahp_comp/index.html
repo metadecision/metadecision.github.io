@@ -81,24 +81,26 @@
 
 
 
-<meta name="description" content="本文yaanp和Super Decisions的功能做比较。">
+<meta name="description" content="本文对yaanp和yaahp的功能进行对比。">
 <meta name="keywords" content="yaanp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yaanp &amp; Super Decisions功能比较">
+<meta property="og:title" content="yaanp &amp; yaahp功能比较">
 <meta property="og:url" content="http://www.yaahp.com/yaanp_yaahp_comp/index.html">
 <meta property="og:site_name" content="博客@元决策软件">
-<meta property="og:description" content="本文yaanp和Super Decisions的功能做比较。">
+<meta property="og:description" content="本文对yaanp和yaahp的功能进行对比。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.yaahp.com/image/yaanp_sd_comp/comp.png">
-<meta property="og:image" content="http://www.yaahp.com/image/yaanp_sd_comp/ahp_anp_calc_compare1.png">
-<meta property="og:image" content="http://www.yaahp.com/image/yaanp_sd_comp/review.png">
-<meta property="og:image" content="http://www.yaahp.com/image/yaanp_sd_comp/sequence.png">
-<meta property="og:image" content="http://www.yaahp.com/image/yaanp_sd_comp/sen.png">
-<meta property="og:updated_time" content="2020-06-21T11:20:40.000Z">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/comp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/model.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/anp.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/model_modify.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/seq_edit.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/matrix_input.png">
+<meta property="og:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/wjx.png">
+<meta property="og:updated_time" content="2020-07-02T09:51:32.745Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yaanp &amp; Super Decisions功能比较">
-<meta name="twitter:description" content="本文yaanp和Super Decisions的功能做比较。">
-<meta name="twitter:image" content="http://www.yaahp.com/image/yaanp_sd_comp/comp.png">
+<meta name="twitter:title" content="yaanp &amp; yaahp功能比较">
+<meta name="twitter:description" content="本文对yaanp和yaahp的功能进行对比。">
+<meta name="twitter:image" content="http://www.yaahp.com/image/yaanp_yaahp_comp/comp.png">
 
 
 
@@ -134,7 +136,7 @@
 
 
 
-  <title>yaanp & Super Decisions功能比较 | 博客@元决策软件</title>
+  <title>yaanp & yaahp功能比较 | 博客@元决策软件</title>
   
 
 
@@ -302,7 +304,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">yaanp & Super Decisions功能比较</h2>
+          <h2 class="post-title" itemprop="name headline">yaanp & yaahp功能比较</h2>
         
 
         <div class="post-meta">
@@ -314,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-21T00:00:00+08:00">
-                Jun 21 2020
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-02T00:00:00+08:00">
+                Jul 2 2020
               </time>
             
 
@@ -361,7 +363,7 @@
 
           
               <div class="post-description">
-                  本文yaanp和Super Decisions的功能做比较。
+                  本文对yaanp和yaahp的功能进行对比。
               </div>
           
 
@@ -378,41 +380,37 @@
       
 
       
-        <p><img src="../image/yaanp_sd_comp/comp.png" alt="功能比较"></p>
+        <p><img src="../image/yaanp_yaahp_comp/comp.png" alt="功能比较"></p>
 <a id="more"></a>
 <ul>
 <li><a href="http://download.metadecsn.com/yaanpman_zhcn.pdf" target="_blank" rel="noopener">点击下载yaanp使用手册PDF版</a></li>
 <li><a href="http://www.metadecsn.com/yaanp_video/" target="_blank" rel="noopener">点击查看yaanp使用视频演示</a></li>
 </ul>
-<p>本文从9个方面对比yaanp与Super Decisions功能。</p>
-<h2 id="层次分析法-AHP-支持"><a href="#层次分析法-AHP-支持" class="headerlink" title="层次分析法(AHP)支持"></a>层次分析法(AHP)支持</h2><p>层次分析法模型可以看做是一种特殊的网络模型：每一层对应一个簇，簇内节点对应层次中的每个要素，簇内节点之间没有相互影响，各层之间没有影响关系循环。</p>
-<p>在yaanp和Super Decisions中，都可以通过构建特殊的单网络模型对层次模型进行分析处理，但yaanp还可以使用层次模型的方式进行模型构建(类似yaahp)，这种形式的层次模型更容易理解。</p>
-<p>下图展示了三种过河收益决策的模型图，分别为层次分析法软件yaahp中构建的层次模型图(红框内)、yaanp中构建的层次模型图(绿框内)和yaanp中单网络ANP模型方式构建的层次模型图(黄框内)。图中下方的网络模型图与其他两个层次模型图完全等价，并且在计算参数设定相同的情况下，最终的计算结果完全相同的。</p>
-<p><img src="../image/yaanp_sd_comp/ahp_anp_calc_compare1.png" alt="过河收益决策的三种模型图"></p>
+<p>yaahp是一个层次分析法辅助软件，已经发展了十五年(2006年发布第一个版本)，由于开发所使用的底层技术老旧，很多问题很多解决，例如进一步提升绘图功能困难、无法明确设定要素顺序等。</p>
+<p>yaanp是在多年的yaahp开发维护经验基础上，利用新的图形引擎开发的一款网络层次分析法辅助软件。不但解决了很多yaahp中由于技术原因无法解决的问题，还提供了网络分析法的支持。</p>
+<p>yaanp V1.0提供除专家数据检查和模糊综合评价法外的yaahp所有功能，这两个功能的升级版模块将在yaanp后续版本中提供，并且yaanp后续版本也会提供打开yaahp存盘数据的功能，进一步提高兼容性。</p>
+<h2 id="层次分析法-AHP-支持"><a href="#层次分析法-AHP-支持" class="headerlink" title="层次分析法(AHP)支持"></a>层次分析法(AHP)支持</h2><p>yaanp和yaahp都提供了层次分析法支持。</p>
+<p>层次分析法模型可以看做是一种特殊的网络模型：每一层对应一个簇，簇内节点对应层次中的每个要素，簇内节点之间没有相互影响，各层之间没有影响关系循环。</p>
+<p>在yaanp中，除了直接构建层次模型(下图右上方绿框中)，还可以通过构建特殊的单网络模型对层次模型进行分析处理。<br>下图中三种过河收益决策的模型图，分别为层次分析法软件yaahp中构建的层次模型图(红框内)、yaanp中构建的层次模型图(绿框内)和yaanp中单网络ANP模型方式构建的层次模型图(黄框内)。图中下方黄框中的网络模型图与其他两个层次模型图完全等价，并且在计算参数设定相同的情况下，最终的计算结果完全相同的。</p>
+<p><img src="../image/yaanp_yaahp_comp/model.png" alt="过河收益决策的三种模型图"></p>
 <p>关于层次模型的不同构建方式的内容可以参考这篇文章：<a href="http://blog.metadecsn.com/yaanp_ahp/" target="_blank" rel="noopener">层次模型的不同构建方式</a></p>
-<h2 id="网络分析法-ANP-支持"><a href="#网络分析法-ANP-支持" class="headerlink" title="网络分析法(ANP)支持"></a>网络分析法(ANP)支持</h2><p>yaanp和Super Decisions都支持网络分析法建模、计算和分析。</p>
-<h2 id="图形化的模型构建"><a href="#图形化的模型构建" class="headerlink" title="图形化的模型构建"></a>图形化的模型构建</h2><p>yaanp以完全图形化的方式进行模型构建的操作，并且模型构建模块还提供了检视模式和顺序设定模式。</p>
-<p><strong>检视模式</strong>可以方便地查看簇间连接及各要素的连接情况，下图最左侧显示簇间连接、中间显示以选中要素为起点的连接、右侧显示以选中要素为终点的连接。</p>
-<p><img src="../image/yaanp_sd_comp/review.png" alt="模型检视模式"></p>
-<p><strong>顺序设定模式</strong>可以方便地设定要素的顺序，要素的顺序会影响判断矩阵中要素顺序、问卷中两两比较问题顺序。进入顺序设定模式后，简单地按顺序鼠标点击要素图形就可以完成顺序的设定。</p>
-<p><img src="../image/yaanp_sd_comp/sequence.png" alt="顺序设定模式"></p>
-<p>Super Decisions虽然提供了图形化的模型展示功能，但没有提供图形化的模型构建功能，编辑模型只能通过功能窗口的方式。全图形化的模型编辑在很多方面有优势，并且yaanp后续的规划中还会提供基于DEMATEL的要素影响关系分析和网络结构自动生成功能。</p>
-<h2 id="群决策"><a href="#群决策" class="headerlink" title="群决策"></a>群决策</h2><p>群决策是为了充分发挥集体的智慧，由多位专家共同参与决策分析并制定决策的整体过程。</p>
-<p>yaanp提供群决策支持，能够管理参与决策的专家信息以及他们提供的决策数据。yaanp还提供了多种专家数据集结方法供用户选择。</p>
-<p>Super Decisions没有提供群决策支持。</p>
-<h2 id="问卷生成和导入"><a href="#问卷生成和导入" class="headerlink" title="问卷生成和导入"></a>问卷生成和导入</h2><p>对于利用层次分析法或网络分析法的决策过程，经常会向专家分发调查问卷，然后回收调查问卷获得专家数据。利用调查问卷可以方便决策数据的手机，大大降低数据输入的工作量。</p>
-<p>yaanp提供两种外部调查问卷生成和导入功能：Excel文件格式、问卷星。<br>使用yaanp生成Excel格式的可导入调查问卷，分发给专家填写并回收后，导入yaanp就可以进行计算分析。<br>也可以生成问卷星问卷创建文本，然后在问卷星中创建调查问卷。邀请专家填写问卷、回收数据后，导入yaanp进行计算分析。</p>
-<p>Super Decisions没有提供问卷生成和导入的支持。</p>
-<h2 id="判断矩阵一致性修正"><a href="#判断矩阵一致性修正" class="headerlink" title="判断矩阵一致性修正"></a>判断矩阵一致性修正</h2><p>对于不一致的判断矩阵，yaanp提供了两种自动修正算法，并且默认设定下可以根据不一致判断矩阵的特点自动选择合适的算法进行修正。<br>更多一致性修正的说明请参考yaanp使用手册7.5节。</p>
-<p>Super Decisions没有提供一致性修正功能。</p>
-<h2 id="判断矩阵检查"><a href="#判断矩阵检查" class="headerlink" title="判断矩阵检查"></a>判断矩阵检查</h2><p>yaanp 的判断矩阵检查功能利用一致性自动修正的思路，尝试对不一致的判断矩阵进行修正，并根据修正结果给出不一致判断矩阵的数据<br>评价和相处理建议。<br>在回收调查问卷数据后，利用判断矩阵检查功能，根据检查结果和建议做相应的处理，可以让决策数据质量更高、决策结论更加科学。</p>
-<p>Super Decisions没有提供类似的功能。</p>
-<h2 id="多种标度类型支持"><a href="#多种标度类型支持" class="headerlink" title="多种标度类型支持"></a>多种标度类型支持</h2><p>yaanp支持1-9、1-5、1-3和1-2标度，用户有更多的选择。</p>
-<p>Super Decisions只支持1-9标度。</p>
-<h2 id="灵敏度分析"><a href="#灵敏度分析" class="headerlink" title="灵敏度分析"></a>灵敏度分析</h2><p>通过灵敏度分析，能够确定某个要素权重发生变化时，对各个备选方案权重产生了什么样的影响，从而引导用户在更高的层次作出决策。</p>
-<p>利用yaanp提供的灵敏度分析功能，能够从纵向和横向的角度，查看备选方案权重随不同要素变化而变化的情况。</p>
-<p><img src="../image/yaanp_sd_comp/sen.png" alt="灵敏度分析"></p>
-<p>Super Decisions也提供了灵敏度分析功能。</p>
+<h2 id="网络分析法-ANP-支持"><a href="#网络分析法-ANP-支持" class="headerlink" title="网络分析法(ANP)支持"></a>网络分析法(ANP)支持</h2><p>网络分析法(Analytic Network Process，ANP)是一种适应非独立的递阶层次结构的决策方法，它是在层次分析法的基础上发展而形成的一种新的实用决策方法。AHP可以看做ANP的一个特例。</p>
+<p>yaanp对使用网络分析法进行建模、计算和分析的全过程提供了支持；yaahp没有网络分析法支持功能。</p>
+<p>相比于国外的Super Decisions软件，yaanp提供了更加友好的用户交互，以及更多的实用辅助功能，例如群决策等。yaanp与Super Decisions的功能对比可以参考这篇文章：<a href="http://blog.metadecsn.com/yaanp_sd_comp/" target="_blank" rel="noopener">yaanp &amp; Super Decisions功能比较</a>；yaanp与Super Decisions的计算结果比较可以参考这篇文章：<a href="http://blog.metadecsn.com/yaanp_and_sd/" target="_blank" rel="noopener">yaanp &amp; Super Decisions网络分析法计算结果比较</a>。</p>
+<p><img src="../image/yaanp_yaahp_comp/anp.png" alt="网络分析法"></p>
+<h2 id="图形化的模型构建"><a href="#图形化的模型构建" class="headerlink" title="图形化的模型构建"></a>图形化的模型构建</h2><p>yaanp更换了图形引擎，提供了功能更强的图形编辑器。模型编辑更方便，可以直接编辑出漂亮的模型图，不需要使用其他专业的图形编辑软件。</p>
+<p><img src="../image/yaanp_yaahp_comp/model_modify.png" alt="图形编辑"></p>
+<h2 id="要素顺序编辑模式"><a href="#要素顺序编辑模式" class="headerlink" title="要素顺序编辑模式"></a>要素顺序编辑模式</h2><p>yaahp只能根据要素和连接创建时间确定要素顺序(影响两两比较问题先后顺序)，而yaanp中提供了专用的“顺序编辑模式”，可以方便地编辑要素的顺序。</p>
+<p><img src="../image/yaanp_yaahp_comp/seq_edit.png" alt="顺序编辑模式"></p>
+<h2 id="多种判断矩阵数据输入方式"><a href="#多种判断矩阵数据输入方式" class="headerlink" title="多种判断矩阵数据输入方式"></a>多种判断矩阵数据输入方式</h2><p>除了基本的判断矩阵形式的输入方式，yaanp还提供了问卷和直接输入形式，方便不同类型数据的输入。直接输入形式后续还会加入更多的自定义标准化方式。</p>
+<p>下图展示了yaanp的三种判断矩阵数据输入方式：矩阵形式(红框)、问卷形式(绿框)和直接输入形式(黄框)。</p>
+<p><img src="../image/yaanp_yaahp_comp/matrix_input.png" alt="判断矩阵数据输入"></p>
+<h2 id="群决策"><a href="#群决策" class="headerlink" title="群决策"></a>群决策</h2><p>yaahp和yaanp都支持群决策。但与yaahp不同，yaanp中所有决策都是群决策，单决策认为是只有一个专家的群决策。</p>
+<h2 id="问卷星问卷生成和导入"><a href="#问卷星问卷生成和导入" class="headerlink" title="问卷星问卷生成和导入"></a>问卷星问卷生成和导入</h2><p>除了Excel格式的调查问卷，yaanp还可以生成问卷星问卷创建文本，方便地创建问卷星问卷。利用问卷星完成收集数据后，下载问卷答案导入yaanp就可以方便地进行分析、计算。</p>
+<p><img src="../image/yaanp_yaahp_comp/wjx.png" alt="生成问卷星问卷创建文本"></p>
+<h2 id="专家数据检查-统计"><a href="#专家数据检查-统计" class="headerlink" title="专家数据检查(统计)"></a>专家数据检查(统计)</h2><p>yaahp中专家数据检查功能使用率较低，yaanp的相应功能模块将重新设计。由于工作量较大并且不是核心功能，所以yaanp V1.0没有提供这个功能，将会在后续版本中提供。</p>
+<h2 id="多种标度类型支持"><a href="#多种标度类型支持" class="headerlink" title="多种标度类型支持"></a>多种标度类型支持</h2><p>除了标准的1-9标度，yaanp还提供了1-5、1-3和1-2标度的支持。Excel格式的问卷也支持这几种标度类型。</p>
+<h2 id="模糊综合评价法"><a href="#模糊综合评价法" class="headerlink" title="模糊综合评价法"></a>模糊综合评价法</h2><p>新的模糊综合评价法模块正在开发，所以yaanp V1.0发布时没有使用yaahp所配套的模糊综合评价法模块。更强大的模糊综合评价法支持将会在yaanp后续版本中提供。</p>
 <ul>
 <li><a href="http://download.metadecsn.com/yaanpman_zhcn.pdf" target="_blank" rel="noopener">点击下载yaanp使用手册PDF版</a></li>
 <li><a href="http://www.metadecsn.com/yaanp_video/" target="_blank" rel="noopener">点击查看yaanp使用视频演示</a></li>
@@ -447,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/yaanp_ahp/" rel="next" title="层次模型的不同构建方式">
-                <i class="fa fa-chevron-left"></i> 层次模型的不同构建方式
+              <a href="/yaanp_sd_comp/" rel="next" title="yaanp & Super Decisions功能比较">
+                <i class="fa fa-chevron-left"></i> yaanp & Super Decisions功能比较
               </a>
             
           </div>
@@ -456,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/yaanp_sd_comp/" rel="prev" title="yaanp & Super Decisions功能比较">
-                yaanp & Super Decisions功能比较 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +622,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#层次分析法-AHP-支持"><span class="nav-number">1.</span> <span class="nav-text">层次分析法(AHP)支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络分析法-ANP-支持"><span class="nav-number">2.</span> <span class="nav-text">网络分析法(ANP)支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形化的模型构建"><span class="nav-number">3.</span> <span class="nav-text">图形化的模型构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群决策"><span class="nav-number">4.</span> <span class="nav-text">群决策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问卷生成和导入"><span class="nav-number">5.</span> <span class="nav-text">问卷生成和导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断矩阵一致性修正"><span class="nav-number">6.</span> <span class="nav-text">判断矩阵一致性修正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断矩阵检查"><span class="nav-number">7.</span> <span class="nav-text">判断矩阵检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多种标度类型支持"><span class="nav-number">8.</span> <span class="nav-text">多种标度类型支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#灵敏度分析"><span class="nav-number">9.</span> <span class="nav-text">灵敏度分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#层次分析法-AHP-支持"><span class="nav-number">1.</span> <span class="nav-text">层次分析法(AHP)支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络分析法-ANP-支持"><span class="nav-number">2.</span> <span class="nav-text">网络分析法(ANP)支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形化的模型构建"><span class="nav-number">3.</span> <span class="nav-text">图形化的模型构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要素顺序编辑模式"><span class="nav-number">4.</span> <span class="nav-text">要素顺序编辑模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多种判断矩阵数据输入方式"><span class="nav-number">5.</span> <span class="nav-text">多种判断矩阵数据输入方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群决策"><span class="nav-number">6.</span> <span class="nav-text">群决策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问卷星问卷生成和导入"><span class="nav-number">7.</span> <span class="nav-text">问卷星问卷生成和导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#专家数据检查-统计"><span class="nav-number">8.</span> <span class="nav-text">专家数据检查(统计)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多种标度类型支持"><span class="nav-number">9.</span> <span class="nav-text">多种标度类型支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模糊综合评价法"><span class="nav-number">10.</span> <span class="nav-text">模糊综合评价法</span></a></li></ol></div>
             
 
           </div>
